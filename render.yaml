@@ -5,7 +5,7 @@ services:
     plan: free
     region: oregon
     rootDir: backend
-    build_command: npm install
+    build_command: npm run build
     start_command: npm start
     env_vars:
       - key: DATABASE_URL
