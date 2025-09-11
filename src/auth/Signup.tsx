@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoMdArrowBack } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
-import { FaRegUser, FaRegEye, FaRegEyeSlash} from "react-icons/fa";
+import { FaRegUser, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 import { MdLockOutline } from "react-icons/md";
 import { Link, useNavigate} from "react-router-dom";

@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* Hide built-in password reveal/clear icons (Edge/IE variants) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input::-ms-clear {
+	display: none;
+}
+
+/* Best-effort hide of any WebKit credential autofill button */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+	display: none;
+	pointer-events: none;
+}
