@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  fullName  String   @db.VarChar(100)
+  email     String   @unique
+  password  String
+  role      Role
+  avatar    String?
+  
+  // Email verification
+  isEmailVerified Boolean @default(false)
+  
+  // Google OAuth
+  googleId String? @unique
+  
+  // Password reset
+  resetPasswordToken      String?
+  resetPasswordExpires    DateTime?
+  
+  // Email verification
+  emailVerificationToken      String?
+  emailVerificationExpires    DateTime?
+  
+  // Activity tracking
+  lastLogin DateTime?
+  isActive  Boolean  @default(true)
+  
+  // Profile information (JSON)
+  profile Json @default("{\"dateOfBirth\": null, \"gender\": null, \"phone\": null, \"address\": {\"street\": null, \"city\": null, \"state\": null, \"zipCode\": null, \"country\": null}, \"emergencyContact\": {\"name\": null, \"relationship\": null, \"phone\": null}}")
+  
+  // User preferences (JSON)
+  preferences Json @default("{\"notifications\": {\"email\": true, \"sms\": false, \"push\": true}, \"language\": \"en\", \"timezone\": \"UTC\"}")
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+enum Role {
+  PATIENT
+  PRACTITIONER
+  ADMIN
+}

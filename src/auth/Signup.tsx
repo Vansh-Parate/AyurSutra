@@ -37,8 +37,8 @@ const Signup = () => {
   }
 
   const handleGoogleLogin = () => {
-    window.location.href = `${API_BASE_URL}/api/v1/auth/google`;
-    navigate('/dashboard');
+    const state = btoa(JSON.stringify({ role }));
+    window.location.href = `${API_BASE_URL}/api/v1/auth/google?state=${state}`;
   };
 
   return (

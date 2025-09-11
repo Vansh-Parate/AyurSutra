@@ -40,11 +40,14 @@ function LandingPage() {
 function Dashboard() {
 	const { user } = useAuth()
 	
-	if (user?.role === 'patient') {
+	// Convert role to lowercase for comparison since backend stores in uppercase
+	const userRole = user?.role?.toLowerCase()
+	
+	if (userRole === 'patient') {
 		return <PatientDashboard />
-	} else if (user?.role === 'practitioner') {
+	} else if (userRole === 'practitioner') {
 		return <PractitionerDashboard />
-	} else if (user?.role === 'admin') {
+	} else if (userRole === 'admin') {
 		return <AdminDashboard />
 	}
 	
