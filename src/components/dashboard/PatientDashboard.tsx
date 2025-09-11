@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import Header from '../Header';
 
 const PatientDashboard: React.FC = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-[#F7FAF7]">

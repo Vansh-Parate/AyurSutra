@@ -1,9 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
 import Header from '../Header';
 
 const AdminDashboard: React.FC = () => {
-  const { user, logout } = useAuth();
 
   return (
     <div className="min-h-screen bg-[#F7FAF7]">
