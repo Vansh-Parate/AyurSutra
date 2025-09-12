@@ -15,6 +15,7 @@ require('./src/config/passport');
 const authRoutes = require('./src/routes/auth');
 const userRoutes = require('./src/routes/users');
 const dashboardRoutes = require('./src/routes/dashboard');
+const assessmentRoutes = require('./src/routes/assessment');
 
 const app = express();
 const PORT = process.env.PORT || 6969;
@@ -74,6 +75,7 @@ app.use(passport.session());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/dashboard', dashboardRoutes);
+app.use('/api/v1/assessment', assessmentRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

@@ -17,6 +17,7 @@ import GoogleSuccess from './auth/GoogleSuccess'
 import PatientDashboard from './components/dashboard/PatientDashboard'
 import PractitionerDashboard from './components/dashboard/PractitionerDashboard'
 import AdminDashboard from './components/dashboard/AdminDashboard'
+import AssessmentPage from './components/assessment/AssessmentPage'
 
 function LandingPage() {
 	return (
@@ -68,6 +69,14 @@ function App() {
 					<Route path="/auth/signin" element={<Signin />} />
 					<Route path="/auth/signup" element={<Signup />} />
 					<Route path="/auth/google-success" element={<GoogleSuccess />} />
+					<Route 
+						path="/assessment"
+						element={
+							<ProtectedRoute>
+								<AssessmentPage />
+							</ProtectedRoute>
+						}
+					/>
 					<Route 
 						path="/dashboard" 
 						element={

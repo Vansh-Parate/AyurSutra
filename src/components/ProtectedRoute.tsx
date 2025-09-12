@@ -36,6 +36,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
     return <Navigate to="/unauthorized" replace />;
   }
 
+  // Force assessment before dashboard if not completed
+  const isDashboard = location.pathname === '/dashboard'
+  const assessmentDone = localStorage.getItem('assessment:completed') === 'true'
+  if (isDashboard && !assessmentDone) {
+    return <Navigate to="/assessment" replace />
+  }
+
   return <>{children}</>;
 };
 
