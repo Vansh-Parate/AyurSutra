@@ -1,4 +1,3 @@
-import React from 'react'
 import StepCard from '../StepCard'
 
 export interface ChoiceOption<T extends string> {

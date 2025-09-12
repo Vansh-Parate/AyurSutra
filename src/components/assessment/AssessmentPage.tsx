@@ -115,20 +115,20 @@ const AssessmentPage: React.FC = () => {
     return () => clearTimeout(timeoutId)
   }, [data])
 
-  const canContinue = useMemo(() => {
-    const key = steps[currentStep]
-    switch (key) {
-      case 'body': return !!data.body
-      case 'skin': return !!data.skin
-      case 'digestion': return !!data.digestion
-      case 'energy': return !!data.energy
-      case 'sleep': return !!data.sleep
-      case 'climate': return !!data.climate
-      case 'mind': return !!data.mind
-      case 'review': return true
-      default: return true
-    }
-  }, [currentStep, data])
+  // const canContinue = useMemo(() => {
+  //   const key = steps[currentStep]
+  //   switch (key) {
+  //     case 'body': return !!data.body
+  //     case 'skin': return !!data.skin
+  //     case 'digestion': return !!data.digestion
+  //     case 'energy': return !!data.energy
+  //     case 'sleep': return !!data.sleep
+  //     case 'climate': return !!data.climate
+  //     case 'mind': return !!data.mind
+  //     case 'review': return true
+  //     default: return true
+  //   }
+  // }, [currentStep, data])
 
   function handleBack() {
     if (currentStep === 0) {
