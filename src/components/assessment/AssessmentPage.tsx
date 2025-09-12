@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AssessmentLayout from './AssessmentLayout'
 import AssessmentSidebar from './AssessmentSidebar'
 import BodyFrameStep, { type BodyFrameValue } from './steps/BodyFrameStep'
