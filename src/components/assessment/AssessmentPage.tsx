@@ -3,6 +3,7 @@ import AssessmentLayout from './AssessmentLayout'
 import AssessmentSidebar from './AssessmentSidebar'
 import BodyFrameStep, { type BodyFrameValue } from './steps/BodyFrameStep'
 import SimpleChoiceStep from './steps/SimpleChoiceStep'
+import ReviewStep from './steps/ReviewStep'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import axios from 'axios'
@@ -29,35 +30,14 @@ const AssessmentPage: React.FC = () => {
   const { token } = useAuth()
   const navigate = useNavigate()
   const [currentStep, setCurrentStep] = useState(0)
-  const [data, setData] = useState<AssessmentData>(() => {
-    try {
-      const raw = localStorage.getItem('assessment:data')
-      return raw ? JSON.parse(raw) : {}
-    } catch {
-      return {}
-    }
-  })
-  const [statuses, setStatuses] = useState<Record<StepKey, StepStatus>>(() => {
-    try {
-      const raw = localStorage.getItem('assessment:statuses')
-      return raw ? JSON.parse(raw) : {} as Record<StepKey, StepStatus>
-    } catch {
-      return {} as Record<StepKey, StepStatus>
-    }
-  })
+  const [data, setData] = useState<AssessmentData>({})
+  const [statuses, setStatuses] = useState<Record<StepKey, StepStatus>>({} as Record<StepKey, StepStatus>)
   const totalSteps = steps.length
 
   useEffect(() => {
-    ;(window as any).lucide?.createIcons?.()
+    ;(window as Window & { lucide?: { createIcons?: () => void } }).lucide?.createIcons?.()
   }, [currentStep, data])
 
-  useEffect(() => {
-    localStorage.setItem('assessment:data', JSON.stringify(data))
-  }, [data])
-
-  useEffect(() => {
-    localStorage.setItem('assessment:statuses', JSON.stringify(statuses))
-  }, [statuses])
 
   const [dosha, setDosha] = useState({ vata: 33.3, pitta: 33.3, kapha: 33.3 })
   const [isScoring, setIsScoring] = useState(false)
@@ -67,22 +47,10 @@ const AssessmentPage: React.FC = () => {
     const timeoutId = setTimeout(async () => {
       setIsScoring(true)
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/v1/assessment/score`, {
-          body: data.body,
-          skin: data.skin,
-          digestion: data.digestion,
-          energy: data.energy,
-          sleep: data.sleep,
-          climate: data.climate,
-          mind: data.mind
-        })
+        // Use client-side scoring as primary method for real-time updates
+        // API call runs in background for additional analysis
+        console.log('Calculating dosha scores for data:', data)
         
-        if (response.data.success) {
-          setDosha(response.data.analysis.scores)
-        }
-      } catch (error) {
-        console.error('Failed to score dosha:', error)
-        // Fallback to simple scoring if API fails
         let vata = 0, pitta = 0, kapha = 0
         if (data.body === 'light') vata += 2
         if (data.body === 'medium') pitta += 2
@@ -105,8 +73,39 @@ const AssessmentPage: React.FC = () => {
         if (data.mind === 'anxious') vata += 1
         if (data.mind === 'irritable') pitta += 1
         if (data.mind === 'calm') kapha += 1
+        
         const total = vata + pitta + kapha || 1
-        setDosha({ vata: (vata/total)*100, pitta: (pitta/total)*100, kapha: (kapha/total)*100 })
+        const newDosha = { 
+          vata: Math.round((vata/total)*100 * 10) / 10, 
+          pitta: Math.round((pitta/total)*100 * 10) / 10, 
+          kapha: Math.round((kapha/total)*100 * 10) / 10 
+        }
+        
+        console.log('Calculated dosha scores:', newDosha)
+        setDosha(newDosha)
+        
+        // Try API call as well (optional)
+        try {
+          const response = await axios.post(`${API_BASE_URL}/api/v1/assessment/score`, {
+            body: data.body,
+            skin: data.skin,
+            digestion: data.digestion,
+            energy: data.energy,
+            sleep: data.sleep,
+            climate: data.climate,
+            mind: data.mind
+          })
+          
+          if (response.data.success) {
+            console.log('API dosha scoring response:', response.data.analysis.scores)
+            setDosha(response.data.analysis.scores)
+          }
+        } catch (apiError) {
+          console.log('API call failed, using fallback scoring:', apiError)
+        }
+        
+      } catch (error) {
+        console.error('Failed to score dosha:', error)
       } finally {
         setIsScoring(false)
       }
@@ -115,20 +114,6 @@ const AssessmentPage: React.FC = () => {
     return () => clearTimeout(timeoutId)
   }, [data])
 
-  // const canContinue = useMemo(() => {
-  //   const key = steps[currentStep]
-  //   switch (key) {
-  //     case 'body': return !!data.body
-  //     case 'skin': return !!data.skin
-  //     case 'digestion': return !!data.digestion
-  //     case 'energy': return !!data.energy
-  //     case 'sleep': return !!data.sleep
-  //     case 'climate': return !!data.climate
-  //     case 'mind': return !!data.mind
-  //     case 'review': return true
-  //     default: return true
-  //   }
-  // }, [currentStep, data])
 
   function handleBack() {
     if (currentStep === 0) {
@@ -170,7 +155,6 @@ const AssessmentPage: React.FC = () => {
       }, {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined
       })
-      localStorage.setItem('assessment:completed', 'true')
       navigate('/dashboard', { replace: true })
     } catch {
       // fallback: still navigate
@@ -203,10 +187,12 @@ const AssessmentPage: React.FC = () => {
         )
       case 'review':
         return (
-          <div className="w-full rounded-2xl bg-white/80 backdrop-blur-sm border border-emerald-100 shadow-sm p-6 min-h-[560px]">
-            <h2 className="text-[24px] font-semibold tracking-tight mb-4">Review</h2>
-            <div className="text-sm text-slate-700">Body frame: <span className="font-medium capitalize">{data.body || '—'}</span></div>
-          </div>
+          <ReviewStep
+            data={data}
+            onBack={handleBack}
+            onFinish={handleFinish}
+            onEditStep={(stepIndex) => setCurrentStep(stepIndex)}
+          />
         )
       case 'skin':
         return (

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import axios from 'axios';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:6969';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -8,10 +11,40 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole }) => {
-  const { isAuthenticated, user, loading } = useAuth();
+  const { isAuthenticated, user, loading, token } = useAuth();
   const location = useLocation();
+  const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
+  const [checkingAssessment, setCheckingAssessment] = useState(false);
 
-  if (loading) {
+  // Check if user has completed assessment
+  useEffect(() => {
+    const checkAssessment = async () => {
+      if (!isAuthenticated || !token || location.pathname !== '/dashboard') {
+        setHasAssessment(true); // Allow access to non-dashboard routes
+        return;
+      }
+
+      setCheckingAssessment(true);
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/v1/assessment/latest`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        
+        // If user has an assessment, allow dashboard access
+        setHasAssessment(!!response.data.assessment);
+      } catch (error) {
+        console.error('Failed to check assessment:', error);
+        // If API fails, allow access (fallback)
+        setHasAssessment(true);
+      } finally {
+        setCheckingAssessment(false);
+      }
+    };
+
+    checkAssessment();
+  }, [isAuthenticated, token, location.pathname]);
+
+  if (loading || checkingAssessment) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#F7FAF7]">
         <div className="flex flex-col items-center">
@@ -22,7 +55,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
             <span className="text-[15px] font-semibold tracking-tight text-zinc-900">AyurSutra</span>
           </div>
           <span className="w-16 h-16 border-4 border-emerald-400 border-t-transparent rounded-full animate-spin mb-6"></span>
-          <div className="text-zinc-800 text-lg font-semibold">Loading...</div>
+          <div className="text-zinc-800 text-lg font-semibold">
+            {checkingAssessment ? 'Checking assessment...' : 'Loading...'}
+          </div>
         </div>
       </div>
     );
@@ -36,11 +71,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // Force assessment before dashboard if not completed
-  const isDashboard = location.pathname === '/dashboard'
-  const assessmentDone = localStorage.getItem('assessment:completed') === 'true'
-  if (isDashboard && !assessmentDone) {
-    return <Navigate to="/assessment" replace />
+  // Redirect to assessment if user hasn't completed it and is trying to access dashboard
+  if (location.pathname === '/dashboard' && hasAssessment === false) {
+    return <Navigate to="/assessment" replace />;
   }
 
   return <>{children}</>;

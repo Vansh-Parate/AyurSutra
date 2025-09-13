@@ -28,8 +28,7 @@ const Signup = () => {
     
     try{
       await signup(fullName, email, password, role);
-      localStorage.removeItem('assessment:completed');
-      navigate('/assessment');
+      navigate('/dashboard');
     }catch(err){
       setError(err instanceof Error ? err.message : 'Signup failed');
     } finally {
