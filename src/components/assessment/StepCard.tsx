@@ -54,7 +54,6 @@ const StepCard: React.FC<StepCardProps> = ({ title, subtitle, children, canConti
     </div>
   )
 }
-
 export default StepCard
 
 
