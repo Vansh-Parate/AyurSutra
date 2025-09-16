@@ -18,6 +18,7 @@ import PatientDashboard from './components/dashboard/PatientDashboard'
 import PractitionerDashboard from './components/dashboard/PractitionerDashboard'
 import AdminDashboard from './components/dashboard/AdminDashboard'
 import AssessmentPage from './components/assessment/AssessmentPage'
+import AssessmentSummaryPage from './components/assessment/AssessmentSummaryPage.tsx'
 
 function LandingPage() {
 	return (
@@ -74,6 +75,14 @@ function App() {
 						element={
 							<ProtectedRoute>
 								<AssessmentPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route 
+						path="/assessment/summary"
+						element={
+							<ProtectedRoute>
+								<AssessmentSummaryPage />
 							</ProtectedRoute>
 						}
 					/>

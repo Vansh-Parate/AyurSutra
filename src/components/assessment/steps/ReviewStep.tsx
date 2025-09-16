@@ -6,9 +6,10 @@ interface ReviewStepProps {
   onBack: () => void;
   onFinish: () => void;
   onEditStep: (stepIndex: number) => void;
+  finishPath?: string;
 }
 
-const ReviewStep: React.FC<ReviewStepProps> = ({ data, onBack, onFinish, onEditStep }) => {
+const ReviewStep: React.FC<ReviewStepProps> = ({ data, onBack, onFinish, onEditStep, finishPath }) => {
   const getDisplayValue = (key: string, value: string) => {
     const displayMap: Record<string, Record<string, string>> = {
       body: {
@@ -82,6 +83,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({ data, onBack, onFinish, onEditS
       onBack={onBack}
       onFinish={onFinish}
       hideSkip={true}
+      finishPath={finishPath}
     >
       <div className="space-y-2.5 md:space-y-3">
         {steps.map((stepKey, index) => {

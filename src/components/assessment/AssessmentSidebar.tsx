@@ -7,20 +7,10 @@ interface AssessmentSidebarProps {
   dosha: { vata: number; pitta: number; kapha: number }
   onStepClick: (stepIndex: number) => void
   isScoring?: boolean
+  steps: { key: string; label: string; icon: string }[]
 }
 
-const steps = [
-  { key: 'body', label: 'Body Frame', icon: 'ruler' },
-  { key: 'skin', label: 'Skin & Hair', icon: 'sparkles' },
-  { key: 'digestion', label: 'Appetite & Digestion', icon: 'flame' },
-  { key: 'energy', label: 'Energy & Activity', icon: 'zap' },
-  { key: 'sleep', label: 'Sleep Patterns', icon: 'moon' },
-  { key: 'climate', label: 'Temperature & Climate', icon: 'thermometer' },
-  { key: 'mind', label: 'Mind & Emotions', icon: 'smile' },
-  { key: 'review', label: 'Review', icon: 'check-circle' }
-]
-
-const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, totalSteps, stepStatuses, dosha, onStepClick, isScoring = false }) => {
+const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, totalSteps, stepStatuses, dosha, onStepClick, isScoring = false, steps }) => {
   const getButtonClassName = (isCurrent: boolean, isClickable: boolean) => {
     const baseClasses = "w-full flex items-center justify-between gap-2.5 rounded-xl px-2.5 py-2 border transition"
     
@@ -33,20 +23,6 @@ const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, tota
     }
     
     return `${baseClasses} border-transparent cursor-not-allowed opacity-50`
-  }
-
-  const getMobileButtonClassName = (isCurrent: boolean, isClickable: boolean) => {
-    const baseClasses = "flex items-center justify-center w-10 h-10 rounded-xl border transition relative"
-    
-    if (isCurrent) {
-      return `${baseClasses} bg-emerald-50 border-emerald-200 ring-2 ring-emerald-100`
-    }
-    
-    if (isClickable) {
-      return `${baseClasses} hover:bg-emerald-50/60 border-emerald-200 hover:border-emerald-300 cursor-pointer`
-    }
-    
-    return `${baseClasses} border-slate-200 cursor-not-allowed opacity-50`
   }
 
   return (

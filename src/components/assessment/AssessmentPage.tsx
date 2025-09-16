@@ -4,11 +4,18 @@ import AssessmentSidebar from './AssessmentSidebar'
 import BodyFrameStep, { type BodyFrameValue } from './steps/BodyFrameStep'
 import SimpleChoiceStep from './steps/SimpleChoiceStep'
 import ReviewStep from './steps/ReviewStep'
+// Summary rendered on a dedicated route
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:6969'
+function getApiBase(): string {
+  const envUrl = (import.meta.env.VITE_API_URL as string) || ''
+  if (envUrl) return envUrl.replace(/\/$/, '')
+  const proto = typeof window !== 'undefined' ? window.location.protocol : 'http:'
+  return `${proto}//localhost:6969`
+}
+const API_BASE_URL = getApiBase()
 
 type StepKey = 'body' | 'skin' | 'digestion' | 'energy' | 'sleep' | 'climate' | 'mind' | 'review'
 
@@ -22,7 +29,7 @@ interface AssessmentData {
   mind?: 'anxious' | 'irritable' | 'calm'
 }
 
-const steps: StepKey[] = ['body', 'skin', 'digestion', 'energy', 'sleep', 'climate', 'mind', 'review']
+const baseSteps: StepKey[] = ['body', 'skin', 'digestion', 'energy', 'sleep', 'climate', 'mind', 'review']
 
 type StepStatus = 'pending' | 'answered' | 'skipped'
 
@@ -32,11 +39,24 @@ const AssessmentPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<AssessmentData>({})
   const [statuses, setStatuses] = useState<Record<StepKey, StepStatus>>({} as Record<StepKey, StepStatus>)
+  const [steps, setSteps] = useState<StepKey[]>(baseSteps)
   const totalSteps = steps.length
 
   useEffect(() => {
     ;(window as Window & { lucide?: { createIcons?: () => void } }).lucide?.createIcons?.()
   }, [currentStep, data])
+
+  // Randomize order per session: keep 'body' first and 'review' last
+  useEffect(() => {
+    const middle = baseSteps.filter(s => s !== 'body' && s !== 'review')
+    for (let i = middle.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      const tmp = middle[i]
+      middle[i] = middle[j]
+      middle[j] = tmp
+    }
+    setSteps(['body', ...middle, 'review'])
+  }, [])
 
 
   const [dosha, setDosha] = useState({ vata: 33.3, pitta: 33.3, kapha: 33.3 })
@@ -142,8 +162,28 @@ const AssessmentPage: React.FC = () => {
   }
 
   async function handleFinish() {
+    const insights = [
+      (() => {
+        const entries = [
+          { name: 'Vata', value: dosha.vata },
+          { name: 'Pitta', value: dosha.pitta },
+          { name: 'Kapha', value: dosha.kapha }
+        ]
+        const sorted = [...entries].sort((a, b) => b.value - a.value)
+        const top = sorted[0]
+        return { title: `${top.name} prominent`, description: `${top.name} is currently the most expressed dosha.` }
+      })(),
+      data.energy ? { title: 'Energy pattern', description: `Reported energy is ${data.energy}.` } : { title: 'Sleep pattern', description: `Sleep tends to be ${data.sleep ?? 'balanced'}.` },
+      data.climate ? { title: 'Climate preference', description: `Prefers ${data.climate} conditions.` } : { title: 'Mind state', description: `Mind feels ${data.mind ?? 'calm'}.` }
+    ]
+
+    const progress = [
+      { label: 'Vata', percent: Math.round(dosha.vata), color: '#6366f1' },
+      { label: 'Pitta', percent: Math.round(dosha.pitta), color: '#f59e0b' },
+      { label: 'Kapha', percent: Math.round(dosha.kapha), color: '#10b981' }
+    ]
+
     try {
-      // send to backend to record completion
       await axios.post(`${API_BASE_URL}/api/v1/assessment`, {
         body: data.body,
         skin: data.skin,
@@ -155,10 +195,10 @@ const AssessmentPage: React.FC = () => {
       }, {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined
       })
-      navigate('/dashboard', { replace: true })
     } catch {
-      // fallback: still navigate
-      navigate('/dashboard', { replace: true })
+      // ignore errors; navigation will still happen
+    } finally {
+      navigate('/assessment/summary', { replace: true, state: { insights, progress } })
     }
   }
 
@@ -192,6 +232,7 @@ const AssessmentPage: React.FC = () => {
             onBack={handleBack}
             onFinish={handleFinish}
             onEditStep={(stepIndex) => setCurrentStep(stepIndex)}
+            finishPath="/assessment/summary"
           />
         )
       case 'skin':
@@ -319,9 +360,23 @@ const AssessmentPage: React.FC = () => {
     }
   })()
 
+  // Normal flow rendering
+
   return (
     <AssessmentLayout
-      sidebar={<AssessmentSidebar currentStep={currentStep} totalSteps={totalSteps} stepStatuses={statuses} dosha={dosha} onStepClick={handleStepClick} isScoring={isScoring} />}
+      sidebar={<AssessmentSidebar currentStep={currentStep} totalSteps={totalSteps} stepStatuses={statuses} dosha={dosha} onStepClick={handleStepClick} isScoring={isScoring} steps={steps.map(s => {
+        const meta: Record<StepKey, { label: string; icon: string }> = {
+          body: { label: 'Body Frame', icon: 'ruler' },
+          skin: { label: 'Skin & Hair', icon: 'sparkles' },
+          digestion: { label: 'Appetite & Digestion', icon: 'flame' },
+          energy: { label: 'Energy & Activity', icon: 'zap' },
+          sleep: { label: 'Sleep Patterns', icon: 'moon' },
+          climate: { label: 'Temperature & Climate', icon: 'thermometer' },
+          mind: { label: 'Mind & Emotions', icon: 'smile' },
+          review: { label: 'Review', icon: 'check-circle' }
+        }
+        return { key: s, ...meta[s] }
+      })} />}
     >
       {stepNode}
     </AssessmentLayout>
