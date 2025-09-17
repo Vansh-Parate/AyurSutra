@@ -59,7 +59,6 @@ const AISuggestionsCard: React.FC<AISuggestionsCardProps> = ({ tips, onGenerate,
     </div>
   )
 }
-
 export default AISuggestionsCard
 
 
