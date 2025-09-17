@@ -22,7 +22,8 @@ const AssessmentSummaryPage: React.FC = () => {
   const location = useLocation()
   const state = (location.state || {}) as LocationState
   const { token } = useAuth()
-  const [loading, setLoading] = useState(false)
+  // non-blocking background load
+  const [, setLoading] = useState(false)
   const [serverAssessment, setServerAssessment] = useState<{
     vataScore?: number
     pittaScore?: number
@@ -31,16 +32,13 @@ const AssessmentSummaryPage: React.FC = () => {
     balanceStatus?: string
     recommendations?: string[] | string
   } | null>(null)
-  const [error, setError] = useState<string | null>(null)
-
-  const [reloadKey, setReloadKey] = useState(0)
 
   useEffect(() => {
     let isMounted = true
     const controller = new AbortController()
     async function fetchLatest() {
       setLoading(true)
-      setError(null)
+      console.log('[Summary] fetching latest assessment...')
       try {
         const res = await axios.get(`${API_BASE_URL}/api/v1/assessment/latest`, {
           headers: token ? { Authorization: `Bearer ${token}` } : undefined,
@@ -50,19 +48,20 @@ const AssessmentSummaryPage: React.FC = () => {
         if (!isMounted) return
         if (res.data?.success) {
           setServerAssessment(res.data.assessment)
+          console.log('[Summary] latest assessment loaded', res.data.assessment)
         } else {
-          setError('Failed to load latest assessment')
+          console.log('[Summary] latest assessment response not successful', res.data)
         }
       } catch {
-        if (!isMounted) return
-        setError('Failed to load latest assessment')
+        console.warn('[Summary] failed to load latest assessment, falling back to client state')
       } finally {
         if (isMounted) setLoading(false)
+        console.log('[Summary] fetch complete, loading=false')
       }
     }
     fetchLatest()
     return () => { isMounted = false; controller.abort() }
-  }, [token, reloadKey])
+  }, [token])
 
   const progress = useMemo(() => {
     if (serverAssessment) {
@@ -109,38 +108,18 @@ const AssessmentSummaryPage: React.FC = () => {
     return 'Daily warm oil massage followed by gentle steam. Add ginger and cinnamon. Keep a steady sleep routine for grounding.'
   }, [serverAssessment])
 
-  if (loading) {
-    return (
-      <div className="p-8 flex flex-col items-center justify-center gap-3 text-emerald-700">
-        <div className="h-10 w-10 rounded-full border-2 border-emerald-300 border-t-emerald-600 animate-spin"></div>
-        <div className="text-sm">Loading your summary…</div>
-      </div>
-    )
-  }
+  // Do not block rendering on loading; we'll always show content
 
-  const showFallbackBanner = !!error
 
   return (
     <div className="p-4 md:p-6">
-      {showFallbackBanner && (
-        <div className="mb-4 flex flex-col items-center gap-2">
-          <div className="text-red-600 text-sm">{error}</div>
-          <div className="flex items-center gap-2">
-            <button onClick={() => setReloadKey(k => k + 1)} className="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Try again</button>
-            <button onClick={() => navigate('/assessment', { replace: true })} className="px-4 py-2 rounded-lg bg-white border border-emerald-200 text-emerald-700 hover:bg-emerald-50">Retake</button>
-          </div>
-          {(state.insights || state.progress) && (
-            <div className="text-[12px] text-slate-600">Showing your latest local results below.</div>
-          )}
-        </div>
-      )}
       <AssessmentSummary
         heading="Assessment Summary"
         insights={insights}
         progress={progress}
         recommendationTitle={recommendationTitle}
         recommendationText={recommendationText}
-        onViewPlan={() => navigate('/plan')}
+        onViewPlan={() => navigate('/dashboard')}
         onBookSession={() => navigate('/sessions/new')}
         onDownload={() => window.print()}
       />

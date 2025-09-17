@@ -1,7 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:6969';
+function getApiBase(): string {
+  const envUrl = (import.meta.env.VITE_API_URL as string) || ''
+  if (envUrl) return envUrl.replace(/\/$/, '')
+  const proto = typeof window !== 'undefined' ? window.location.protocol : 'http:'
+  return `${proto}//localhost:6969`
+}
+const API_BASE_URL = getApiBase()
 
 interface User {
   id: string;
@@ -55,6 +61,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           // Token is invalid, remove it
           localStorage.removeItem('token');
           setToken(null);
+          setUser(null);
         }
       }
       setLoading(false);
