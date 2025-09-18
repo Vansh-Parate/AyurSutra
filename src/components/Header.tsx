@@ -24,12 +24,12 @@ export default function Header() {
               </nav>
               <div className="flex items-center gap-3">
                 <button className="hidden sm:inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200 hover:ring-emerald-300 hover:bg-emerald-50 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="play-circle" className="lucide lucide-play-circle h-4 w-4"></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
                   <span>Live demo</span>
                 </button>
                 <Link to="/auth/signin" className="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
                   <span>Get started</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="arrow-right" className="lucide lucide-arrow-right h-4 w-4"></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </Link>
               </div>
             </>
@@ -45,7 +45,7 @@ export default function Header() {
                 onClick={logout}
                 className="inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-medium text-zinc-600 ring-1 ring-zinc-200 hover:ring-zinc-300 hover:bg-zinc-50 transition-all"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="log-out" className="lucide lucide-log-out h-4 w-4"></svg>
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                 <span>Logout</span>
               </button>
             </div>

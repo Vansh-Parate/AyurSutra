@@ -13,10 +13,10 @@ export default function Hero() {
             <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a href="#features" className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
                 Explore features
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="arrow-right" className="lucide lucide-arrow-right h-4 w-4"></svg>
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
               </a>
               <button className="inline-flex gap-2 ring-1 ring-zinc-200 hover:bg-white/70 hover:ring-emerald-200 transition-all text-sm font-medium text-emerald-900 rounded-md pt-2.5 pr-4 pb-2.5 pl-4 items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="sparkles" className="lucide lucide-sparkles h-4 w-4"></svg>
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
                 How it works
               </button>
             </div>
@@ -39,15 +39,15 @@ export default function Hero() {
                     <span className="text-sm font-medium text-zinc-800">AyurSutra Console</span>
                   </div>
                   <div className="flex items-center gap-2 text-zinc-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="leaf" className="lucide lucide-leaf h-4 w-4"></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="shield-check" className="lucide lucide-shield-check h-4 w-4"></svg>
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2C7 2 3 6 3 11c0 5 4 10 9 10s9-5 9-10c0-5-4-9-9-9z"/></svg>
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-3 pt-3">
                   <div className="col-span-2 rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-medium text-zinc-700">Today’s Schedule</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="calendar-clock" className="lucide lucide-calendar-clock h-4 w-4 text-emerald-600"></svg>
+                      <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 12v4l3 1"/></svg>
                     </div>
                     <ul className="mt-2 space-y-2">
                       <li className="flex items-center justify-between text-xs text-zinc-600">
@@ -66,7 +66,7 @@ export default function Hero() {
                   </div>
                   <div className="rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
                     <div className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="sparkles" className="lucide lucide-sparkles h-4 w-4 text-emerald-600"></svg>
+                      <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
                       <span className="text-xs font-medium text-zinc-700">AI Insights</span>
                     </div>
                     <p className="mt-2 text-[11.5px] leading-5 text-zinc-600">
@@ -76,7 +76,7 @@ export default function Hero() {
                   <div className="col-span-3 rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-medium text-zinc-700">Progress</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="activity" className="lucide lucide-activity h-4 w-4 text-emerald-600"></svg>
+                      <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
                     <div className="mt-3 grid grid-cols-3 gap-2">
                       <div className="rounded-md bg-emerald-50 text-emerald-900 px-2 py-2 text-[11px] ring-1 ring-emerald-100">Sleep +18%</div>
@@ -88,7 +88,7 @@ export default function Hero() {
               </div>
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs text-zinc-700 shadow-sm ring-1 ring-zinc-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="shield-check" className="lucide lucide-shield-check h-4 w-4 text-emerald-600"></svg>
+                  <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                   HIPAA-ready, secure by design
                 </div>
               </div>

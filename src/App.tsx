@@ -9,7 +9,7 @@ import Hero from './components/Hero'
 import Features from './components/Features'
 import Journeys from './components/Journeys'
 import Impact from './components/Impact'
-import CTA from './components/CTA'
+import Cta from './components/CTA'
 import ProtectedRoute from './components/ProtectedRoute'
 import Signin from './auth/Signin'
 import Signup from './auth/Signup'
@@ -32,7 +32,7 @@ function LandingPage() {
 					<Features />
 					<Journeys />
 					<Impact />
-					<CTA />
+                    <Cta />
 				</main>
 			</div>
 		</>
@@ -70,30 +70,30 @@ function App() {
 					<Route path="/auth/signin" element={<Signin />} />
 					<Route path="/auth/signup" element={<Signup />} />
 					<Route path="/auth/google-success" element={<GoogleSuccess />} />
-					<Route 
-						path="/assessment"
-						element={
-							<ProtectedRoute>
-								<AssessmentPage />
-							</ProtectedRoute>
-						}
-					/>
-					<Route 
-						path="/assessment/summary"
-						element={
-							<ProtectedRoute>
-								<AssessmentSummaryPage />
-							</ProtectedRoute>
-						}
-					/>
-					<Route 
-						path="/dashboard" 
-						element={
-							<ProtectedRoute>
-								<Dashboard />
-							</ProtectedRoute>
-						} 
-					/>
+                    <Route 
+                        path="/assessment"
+                        element={
+                            <ProtectedRoute requiredRole={'patient'}>
+                                <AssessmentPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route 
+                        path="/assessment/summary"
+                        element={
+                            <ProtectedRoute requiredRole={'patient'}>
+                                <AssessmentSummaryPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route 
+                        path="/dashboard" 
+                        element={
+                            <ProtectedRoute requiredRole={'patient'}>
+                                <Dashboard />
+                            </ProtectedRoute>
+                        } 
+                    />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</Router>

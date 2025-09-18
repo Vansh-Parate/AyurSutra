@@ -30,7 +30,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
         isAuthenticated,
         hasToken: !!token
       })
-      if (!isAuthenticated || !token || location.pathname !== '/dashboard') {
+      if (!isAuthenticated || !token || (location.pathname !== '/dashboard' && location.pathname !== '/assessment')) {
         setHasAssessment(true);
         setCheckingAssessment(false);
         console.log('[ProtectedRoute] skipping assessment check (not dashboard or unauth). Allowing access.')
@@ -53,7 +53,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
           timeout: 5000 // 5 second timeout
         });
         
-        // If user has an assessment, allow dashboard access
+        // If user has an assessment, allow dashboard and block re-assessment
         setHasAssessment(!!response.data.assessment);
         console.log('[ProtectedRoute] assessment check success', {
           hasAssessment: !!response.data.assessment,
@@ -98,13 +98,18 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
     return <Navigate to="/auth/signin" state={{ from: location }} replace />;
   }
 
-  if (requiredRole && user?.role !== requiredRole) {
+  if (requiredRole && (user?.role?.toLowerCase() !== requiredRole.toLowerCase())) {
     return <Navigate to="/unauthorized" replace />;
   }
 
   // Redirect to assessment if user hasn't completed it and is trying to access dashboard
   if (location.pathname === '/dashboard' && hasAssessment === false) {
     return <Navigate to="/assessment" replace />;
+  }
+
+  // If user already has assessment completed, block revisiting assessment route
+  if (location.pathname === '/assessment' && hasAssessment === true) {
+    return <Navigate to="/dashboard" replace />
   }
 
   return <>{children}</>;

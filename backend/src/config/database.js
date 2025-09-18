@@ -2,7 +2,16 @@ const { PrismaClient } = require('@prisma/client');
 
 // Create Prisma client instance
 const prisma = new PrismaClient({
-  log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : ['error'],
+  log: (() => {
+    const level = (process.env.PRISMA_LOG_LEVEL || '').toLowerCase()
+    if (level === 'silent') return []
+    if (level === 'error') return ['error']
+    if (level === 'warn') return ['warn', 'error']
+    if (level === 'info') return ['info', 'warn', 'error']
+    if (level === 'query') return ['query', 'info', 'warn', 'error']
+    // default: only errors in production, warn+error in development without noisy query logs
+    return process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error']
+  })(),
   errorFormat: 'pretty',
 });
 

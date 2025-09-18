@@ -13,7 +13,7 @@ const CurrentTreatmentCard: React.FC<CurrentTreatmentCardProps> = ({ programName
     <div className="col-span-12 lg:col-span-7 rounded-xl border border-emerald-100 bg-white p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <i data-lucide="droplets" className="h-4 w-4 text-emerald-600"></i>
+          <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2.69 7.05 8.64a6.99 6.99 0 1 0 9.9 0L12 2.69z"/></svg>
           <span className="text-[14px] font-medium tracking-tight text-slate-900">Current Treatment</span>
         </div>
         <span className="text-[12px] text-slate-600">{dayLabel}</span>

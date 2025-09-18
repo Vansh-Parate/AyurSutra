@@ -61,6 +61,27 @@ const AssessmentPage: React.FC = () => {
 
   const [dosha, setDosha] = useState({ vata: 33.3, pitta: 33.3, kapha: 33.3 })
   const [isScoring, setIsScoring] = useState(false)
+  // Randomized per-session mapping from options to doshas to prevent predictability
+  const [optionToDoshaMap] = useState(() => {
+    // For each question key, assign a random permutation of ['vata','pitta','kapha'] to its three options
+    type Dosha = 'vata' | 'pitta' | 'kapha'
+    type Triplet = readonly [Dosha, Dosha, Dosha]
+    function shuffledTuple(): Triplet {
+      const a: Dosha[] = ['vata','pitta','kapha']
+      for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] }
+      return [a[0], a[1], a[2]] as const
+    }
+    const map = {
+      body: shuffledTuple(),
+      skin: shuffledTuple(),
+      digestion: shuffledTuple(),
+      energy: shuffledTuple(),
+      sleep: shuffledTuple(),
+      climate: shuffledTuple(),
+      mind: shuffledTuple()
+    }
+    return map as Record<Exclude<StepKey,'review'>, Triplet>
+  })
 
   // Debounced dosha scoring to prevent too many API calls
   useEffect(() => {
@@ -72,27 +93,40 @@ const AssessmentPage: React.FC = () => {
         console.log('Calculating dosha scores for data:', data)
         
         let vata = 0, pitta = 0, kapha = 0
-        if (data.body === 'light') vata += 2
-        if (data.body === 'medium') pitta += 2
-        if (data.body === 'sturdy') kapha += 2
-        if (data.skin === 'dry') vata += 1
-        if (data.skin === 'normal') pitta += 1
-        if (data.skin === 'oily') kapha += 1
-        if (data.digestion === 'irregular') vata += 1.5
-        if (data.digestion === 'sharp') pitta += 1.5
-        if (data.digestion === 'slow') kapha += 1.5
-        if (data.energy === 'variable') vata += 1
-        if (data.energy === 'intense') pitta += 1
-        if (data.energy === 'steady') kapha += 1
-        if (data.sleep === 'light') vata += 1
-        if (data.sleep === 'moderate') pitta += 1
-        if (data.sleep === 'heavy') kapha += 1
-        if (data.climate === 'warm') vata += 0.5
-        if (data.climate === 'cold') pitta += 0.5
-        if (data.climate === 'damp') kapha += 0.5
-        if (data.mind === 'anxious') vata += 1
-        if (data.mind === 'irritable') pitta += 1
-        if (data.mind === 'calm') kapha += 1
+        function addByIndex(key: Exclude<StepKey,'review'>, index: number, weight: number){
+          const map = optionToDoshaMap[key][index]
+          if (map === 'vata') vata += weight
+          if (map === 'pitta') pitta += weight
+          if (map === 'kapha') kapha += weight
+        }
+        if (data.body){
+          const idx = data.body === 'light' ? 0 : data.body === 'medium' ? 1 : 2
+          addByIndex('body', idx, 2)
+        }
+        if (data.skin){
+          const idx = data.skin === 'dry' ? 0 : data.skin === 'normal' ? 1 : 2
+          addByIndex('skin', idx, 1)
+        }
+        if (data.digestion){
+          const idx = data.digestion === 'irregular' ? 0 : data.digestion === 'sharp' ? 1 : 2
+          addByIndex('digestion', idx, 1.5)
+        }
+        if (data.energy){
+          const idx = data.energy === 'variable' ? 0 : data.energy === 'intense' ? 1 : 2
+          addByIndex('energy', idx, 1)
+        }
+        if (data.sleep){
+          const idx = data.sleep === 'light' ? 0 : data.sleep === 'moderate' ? 1 : 2
+          addByIndex('sleep', idx, 1)
+        }
+        if (data.climate){
+          const idx = data.climate === 'warm' ? 0 : data.climate === 'cold' ? 1 : 2
+          addByIndex('climate', idx, 0.5)
+        }
+        if (data.mind){
+          const idx = data.mind === 'anxious' ? 0 : data.mind === 'irritable' ? 1 : 2
+          addByIndex('mind', idx, 1)
+        }
         
         const total = vata + pitta + kapha || 1
         const newDosha = { 
@@ -132,7 +166,7 @@ const AssessmentPage: React.FC = () => {
     }, 300) // 300ms debounce
 
     return () => clearTimeout(timeoutId)
-  }, [data])
+  }, [data, optionToDoshaMap])
 
 
   function handleBack() {
@@ -198,7 +232,7 @@ const AssessmentPage: React.FC = () => {
     } catch {
       // ignore errors; navigation will still happen
     } finally {
-      navigate('/assessment/summary', { replace: true, state: { insights, progress } })
+      navigate('/assessment/summary', { replace: true, state: { insights, progress, scores: dosha, answers: data } })
     }
   }
 
