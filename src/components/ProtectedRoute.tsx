@@ -28,12 +28,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
       console.log('[ProtectedRoute] checkAssessment start', {
         path: location.pathname,
         isAuthenticated,
-        hasToken: !!token
+        hasToken: !!token,
+        userRole: user?.role
       })
-      if (!isAuthenticated || !token || (location.pathname !== '/dashboard' && location.pathname !== '/assessment')) {
+      
+      // Skip assessment check for practitioners and admins
+      if (!isAuthenticated || !token || user?.role?.toLowerCase() !== 'patient' || (location.pathname !== '/dashboard' && location.pathname !== '/assessment')) {
         setHasAssessment(true);
         setCheckingAssessment(false);
-        console.log('[ProtectedRoute] skipping assessment check (not dashboard or unauth). Allowing access.')
+        console.log('[ProtectedRoute] skipping assessment check (not patient or not dashboard/assessment). Allowing access.')
         return;
       }
 
@@ -73,7 +76,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
     };
 
     checkAssessment();
-  }, [isAuthenticated, token, location.pathname]);
+  }, [isAuthenticated, token, location.pathname, user?.role]);
 
   if (loading || checkingAssessment) {
     return (
@@ -102,13 +105,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // Redirect to assessment if user hasn't completed it and is trying to access dashboard
-  if (location.pathname === '/dashboard' && hasAssessment === false) {
+  // Redirect to assessment if user hasn't completed it and is trying to access dashboard (patients only)
+  if (location.pathname === '/dashboard' && hasAssessment === false && user?.role?.toLowerCase() === 'patient') {
     return <Navigate to="/assessment" replace />;
   }
 
-  // If user already has assessment completed, block revisiting assessment route
-  if (location.pathname === '/assessment' && hasAssessment === true) {
+  // If user already has assessment completed, block revisiting assessment route (patients only)
+  if (location.pathname === '/assessment' && hasAssessment === true && user?.role?.toLowerCase() === 'patient') {
     return <Navigate to="/dashboard" replace />
   }
 

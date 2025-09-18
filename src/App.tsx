@@ -15,7 +15,7 @@ import Signin from './auth/Signin'
 import Signup from './auth/Signup'
 import GoogleSuccess from './auth/GoogleSuccess'
 import PatientDashboard from './components/dashboard/PatientDashboard'
-import PractitionerDashboard from './components/dashboard/PractitionerDashboard'
+import PractitionerDashboard from './components/dashboard/practitioner/PractitionerDashboard'
 import AdminDashboard from './components/dashboard/AdminDashboard'
 import AssessmentPage from './components/assessment/AssessmentPage'
 import AssessmentSummaryPage from './components/assessment/AssessmentSummaryPage.tsx'
@@ -89,7 +89,7 @@ function App() {
                     <Route 
                         path="/dashboard" 
                         element={
-                            <ProtectedRoute requiredRole={'patient'}>
+                            <ProtectedRoute>
                                 <Dashboard />
                             </ProtectedRoute>
                         } 

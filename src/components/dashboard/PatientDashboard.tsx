@@ -82,7 +82,7 @@ const PatientDashboard: React.FC = () => {
               <span className="mx-2 h-1 w-1 rounded-full bg-emerald-400"></span>
               <span>Next reward in 2 check-ins</span>
             </div>
-            <button className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50">
+            <button className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300 hover:shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-1 active:scale-95">
               <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
               Claim
             </button>
@@ -109,11 +109,11 @@ const PatientDashboard: React.FC = () => {
                 <ProgressChartCard labels={["Day 1","Day 3","Day 5","Day 7","Day 9","Day 11","Day 13"]} data={[8,7,6.5,6,5.2,4.6,4]} />
               </div>
               <div className="mt-6 pt-4 border-t border-emerald-100 flex items-center justify-end gap-2">
-                <button className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition">
+                <button className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-slate-500/30 focus:ring-offset-1 active:scale-95 hover:shadow-sm">
                   <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M21 3v6h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   <span className="font-medium">Sync data</span>
                 </button>
-                <button className="inline-flex items-center gap-1.5 text-[12px] px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm">
+                <button className="inline-flex items-center gap-1.5 text-[12px] px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-1 active:scale-95 hover:shadow-lg">
                   <span className="font-medium">Update symptoms</span>
                   <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </button>

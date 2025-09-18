@@ -84,14 +84,14 @@ const ChatWidget: React.FC = () => {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      <div className={`absolute bottom-14 right-0 transition-transform transition-opacity duration-200 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+      <div className={`absolute bottom-14 right-0 transition-all duration-200 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
         <div className="w-[320px] h-[420px] rounded-2xl bg-white/90 backdrop-blur border border-emerald-100 shadow-xl overflow-hidden translate-x-[calc(100%-48px)] sm:translate-x-0 sm:right-0">
           <div className="flex items-center justify-between px-3 py-2 bg-gradient-to-r from-emerald-50 to-green-50 border-b border-emerald-100">
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               <span className="text-[13px] font-medium text-emerald-900">Ayur Assistant</span>
             </div>
-            <button onClick={() => setOpen(false)} className="text-slate-600 hover:text-slate-800">
+            <button onClick={() => setOpen(false)} className="text-slate-600 hover:text-slate-800 transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-1 active:scale-95 rounded-md p-1">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
@@ -117,16 +117,16 @@ const ChatWidget: React.FC = () => {
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter') send() }}
               placeholder="Ask about diet, routine, herbs..."
-              className="flex-1 text-[13px] rounded-md border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-300 px-2.5 py-2 bg-white/80"
+              className="flex-1 text-[13px] rounded-md border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-300 px-2.5 py-2 bg-white/80 transition-all duration-200 hover:border-emerald-300 focus:border-emerald-400"
             />
-            <button onClick={send} disabled={sending || !input.trim()} className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-60">
+            <button onClick={send} disabled={sending || !input.trim()} className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-60 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-1 active:scale-95 hover:shadow-sm disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none">
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
               Send
             </button>
           </div>
         </div>
       </div>
-      <button onClick={() => setOpen(v => !v)} className={`rounded-full h-12 w-12 flex items-center justify-center shadow-lg ring-1 ring-emerald-200 bg-emerald-600 hover:bg-emerald-700 text-white ${open ? 'scale-90' : 'scale-100'}`} aria-label="Open chat">
+      <button onClick={() => setOpen(v => !v)} className={`rounded-full h-12 w-12 flex items-center justify-center shadow-lg ring-1 ring-emerald-200 bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:ring-offset-2 active:scale-95 hover:shadow-xl ${open ? 'scale-90' : 'scale-100'}`} aria-label="Open chat">
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </button>
     </div>

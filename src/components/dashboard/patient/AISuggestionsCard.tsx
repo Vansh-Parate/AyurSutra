@@ -43,7 +43,7 @@ const AISuggestionsCard: React.FC<AISuggestionsCardProps> = ({ tips, onGenerate,
         )}
       </div>
       <div className="mt-3 pt-3 border-t border-emerald-100">
-        <button onClick={onGenerate} disabled={loading} className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition disabled:opacity-60 disabled:cursor-not-allowed">
+        <button onClick={onGenerate} disabled={loading} className="inline-flex items-center gap-1.5 text-[12px] px-2.5 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-slate-500/30 focus:ring-offset-1 active:scale-95 hover:shadow-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none">
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M15 4V2"/>
             <path d="M15 8v-2"/>
