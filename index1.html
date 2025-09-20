@@ -1,0 +1,1387 @@
+<html lang="en"><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>AyurSutra — AI-powered Ayurveda Healthcare</title>
+    <meta name="description" content="AyurSutra blends traditional Panchakarma with AI to streamline care, reduce wait times, and improve outcomes for patients and practitioners.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+      <body class="min-h-screen bg-[#F7FAF7] text-zinc-800 antialiased selection:bg-emerald-200/60 selection:text-emerald-900" style="font-family: Inter, ui-sans-serif, system-ui">
+        <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:m-4 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-sm focus:ring-1 focus:ring-emerald-400">Skip to content</a>
+    
+        <!-- Background motifs -->
+        <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
+          <div class="absolute inset-0 bg-gradient-to-b from-emerald-100/40 via-transparent to-transparent"></div>
+          <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-emerald-200/30 blur-3xl"></div>
+          <div class="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-lime-200/30 blur-3xl"></div>
+          <!-- Subtle leaf outlines -->
+          <div class="absolute top-20 right-8 text-emerald-300/40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" class="lucide lucide-leaf h-10 w-10"></svg>
+          </div>
+          <div class="absolute bottom-28 left-10 text-emerald-300/40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" class="lucide lucide-leaf h-8 w-8"></svg>
+          </div>
+        </div>
+    
+        <!-- Header -->
+        <header class="sticky top-0 z-40 backdrop-blur-md bg-[#F7FAF7]/80 border-b border-zinc-200/70">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+              <a href="#" class="flex items-center gap-2 group" aria-label="AyurSutra Home">
+                <div class="h-8 w-8 rounded-md bg-emerald-600 text-white flex items-center justify-center ring-1 ring-emerald-500/70 group-hover:ring-emerald-400 transition-all duration-200 tracking-tight">
+                  <span class="text-[12px] font-semibold">AS</span>
+                </div>
+                <span class="text-[15px] sm:text-[16px] font-semibold tracking-tight">AyurSutra</span>
+              </a>
+              <nav class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#features" class="text-zinc-600 hover:text-emerald-700 hover:underline underline-offset-4">Features</a>
+                <a href="#journeys" class="text-zinc-600 hover:text-emerald-700 hover:underline underline-offset-4">Journeys</a>
+                <a href="#assessment" class="text-zinc-600 hover:text-emerald-700 hover:underline underline-offset-4">Assessment</a>
+                <a href="#impact" class="text-zinc-600 hover:text-emerald-700 hover:underline underline-offset-4">Impact</a>
+              </nav>
+              <div class="flex items-center gap-3">
+                <button class="hidden sm:inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200 hover:ring-emerald-300 hover:bg-emerald-50 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="play-circle" class="lucide lucide-play-circle h-4 w-4"></svg>
+                  <span>Live demo</span>
+                </button>
+                <a href="#cta" class="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
+                  <span>Get started</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right h-4 w-4"></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+    
+        <main id="main" class="">
+          <!-- Hero -->
+          <section class="relative">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 py-16 md:py-20">
+                <div class="flex flex-col justify-center">
+                  <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900">
+                    Traditional Panchakarma meets modern efficiency
+                  </h1>
+                  <p class="mt-4 text-[15.5px] leading-relaxed text-zinc-600">
+                    AyurSutra blends ancient wisdom with AI-driven workflows to streamline care, personalize treatment, and bring calm back to clinics and homes.
+                  </p>
+                  <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <a href="#features" class="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
+                      Explore features
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right h-4 w-4"></svg>
+                    </a>
+                    <a href="#assessment" class="inline-flex gap-2 ring-1 ring-zinc-200 hover:bg-white/70 hover:ring-emerald-200 transition-all text-sm font-medium text-emerald-900 rounded-md pt-2.5 pr-4 pb-2.5 pl-4 items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles h-4 w-4"></svg>
+                      Take the assessment
+                    </a>
+                  </div>
+                  <div class="mt-8 flex items-center gap-4">
+                    <div class="flex -space-x-2">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Happy patient" class="h-8 w-8 rounded-full ring-2 ring-white object-cover">
+                      <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Practitioner" class="h-8 w-8 rounded-full ring-2 ring-white object-cover">
+                      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Clinic admin" class="h-8 w-8 rounded-full ring-2 ring-white object-cover">
+                    </div>
+                    <p class="text-xs text-zinc-600">
+                      Trusted by clinics and wellness centers worldwide
+                    </p>
+                  </div>
+                </div>
+    
+                <!-- Hero visual -->
+                <div class="relative">
+                  <div class="relative mx-auto max-w-lg">
+                    <div class="rounded-xl bg-white/80 backdrop-blur ring-1 ring-zinc-200 shadow-sm p-4">
+                      <div class="flex items-center justify-between border-b border-zinc-200/80 pb-3">
+                        <div class="flex items-center gap-2">
+                          <div class="h-2.5 w-2.5 rounded-full bg-emerald-500"></div>
+                          <span class="text-sm font-medium text-zinc-800">AyurSutra Console</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-zinc-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" class="lucide lucide-leaf h-4 w-4"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check h-4 w-4"></svg>
+                        </div>
+                      </div>
+                      <div class="grid grid-cols-3 gap-3 pt-3">
+                        <div class="col-span-2 rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
+                          <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-zinc-700">Today’s Schedule</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="00 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar-clock" class="lucide lucide-calendar-clock h-4 w-4 text-emerald-600"></svg>
+                          </div>
+                          <ul class="mt-2 space-y-2">
+                            <li class="flex items-center justify-between text-xs text-zinc-600">
+                              <span class="">09:00 - Abhyanga</span>
+                              <span class="text-emerald-700 font-medium">Room 2</span>
+                            </li>
+                            <li class="flex items-center justify-between text-xs text-zinc-600">
+                              <span class="">10:30 - Shirodhara</span>
+                              <span class="text-emerald-700 font-medium">Room 1</span>
+                            </li>
+                            <li class="flex items-center justify-between text-xs text-zinc-600">
+                              <span>11:30 - Consultation</span>
+                              <span class="text-emerald-700 font-medium">Telehealth</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
+                          <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles h-4 w-4 text-emerald-600"></svg>
+                            <span class="text-xs font-medium text-zinc-700">AI Insights</span>
+                          </div>
+                          <p class="mt-2 text-[11.5px] leading-5 text-zinc-600">
+                            Recommend <span class="font-medium text-emerald-700">Pitta</span> calming protocol; add <span class="font-medium">Triphala</span>.
+                          </p>
+                        </div>
+                        <div class="col-span-3 rounded-lg border border-zinc-200 p-3 hover:border-emerald-200 transition">
+                          <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-zinc-700">Progress</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" class="lucide lucide-activity h-4 w-4 text-emerald-600"></svg>
+                          </div>
+                          <div class="mt-3 grid grid-cols-3 gap-2">
+                            <div class="rounded-md bg-emerald-50 text-emerald-900 px-2 py-2 text-[11px] ring-1 ring-emerald-100">
+                              Sleep +18%
+                            </div>
+                            <div class="rounded-md bg-emerald-50 text-emerald-900 px-2 py-2 text-[11px] ring-1 ring-emerald-100">
+                              Stress −23%
+                            </div>
+                            <div class="rounded-md bg-emerald-50 text-emerald-900 px-2 py-2 text-[11px] ring-1 ring-emerald-100">
+                              Energy +14%
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-6 left-1/2 -translate-x-1/2">
+                      <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs text-zinc-700 shadow-sm ring-1 ring-zinc-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check h-4 w-4 text-emerald-600"></svg>
+                        HIPAA-ready, secure by design
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <!-- Key Features -->
+          <section id="features" class="relative">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex items-end justify-between">
+                <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Key features</h2>
+              </div>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Feature 1: AI scheduling -->
+                <div class="group rounded-xl bg-white p-5 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all hover:-translate-y-0.5">
+                  <div class="flex items-center justify-between">
+                    <div class="h-14 w-14 rounded-full ring-1 ring-emerald-100 bg-gradient-to-br from-emerald-50 to-lime-50 flex items-center justify-center">
+                      <!-- Custom minimal SVG illustration: Calendar + clock + sparkle (AI) -->
+                      <svg viewBox="0 0 48 48" class="h-8 w-8 text-emerald-700" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="8.5" y="12.5" width="31" height="26" rx="4.5"></rect>
+                        <line x1="16" y1="7.5" x2="16" y2="13"></line>
+                        <line x1="32" y1="7.5" x2="32" y2="13"></line>
+                        <line x1="8.5" y1="18" x2="39.5" y2="18"></line>
+                        <circle cx="29" cy="27" r="6"></circle>
+                        <line x1="29" y1="27" x2="29" y2="23.5"></line>
+                        <line x1="29" y1="27" x2="32" y2="27"></line>
+                        <path d="M13.5 25.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5z"></path>
+                      </svg>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right h-4 w-4 text-zinc-400 group-hover:text-emerald-600 transition-colors"></svg>
+                  </div>
+                  <h3 class="mt-3 text-[16px] font-semibold tracking-tight text-zinc-900">AI scheduling</h3>
+                  <p class="mt-1.5 text-sm text-zinc-600">
+                    Reduce bottlenecks with automated slots, resource allocation, and reminders.
+                  </p>
+                </div>
+    
+                <!-- Feature 2: Personalized recommendations -->
+                <div class="group rounded-xl bg-white p-5 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all hover:-translate-y-0.5">
+                  <div class="flex items-center justify-between">
+                    <div class="h-14 w-14 rounded-full ring-1 ring-emerald-100 bg-gradient-to-br from-emerald-50 to-lime-50 flex items-center justify-center">
+                      <!-- Custom minimal SVG illustration: Leaf + plus + profile hint -->
+                      <svg viewBox="0 0 48 48" class="h-8 w-8 text-emerald-700" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="14.5" cy="18.5" r="4"></circle>
+                        <path d="M7.5 30.5c1.8-3.5 5.2-5.5 9-5.5s7.2 2 9 5.5"></path>
+                        <path d="M34 12c5 6.5 3.5 16-4.5 20.5C24 35 20 35 16 34c4-6 9-9 18-22z"></path>
+                        <path d="M37.5 28v6"></path>
+                        <path d="M34.5 31h6"></path>
+                      </svg>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right h-4 w-4 text-zinc-400 group-hover:text-emerald-600 transition-colors"></svg>
+                  </div>
+                  <h3 class="mt-3 text-[16px] font-semibold tracking-tight text-zinc-900">Personalized recommendations</h3>
+                  <p class="mt-1.5 text-sm text-zinc-600">
+                    Personalized treatment plans guided by dosha profiling and evidence.
+                  </p>
+                </div>
+    
+                <!-- Feature 3: Progress tracking -->
+                <div class="group rounded-xl bg-white p-5 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all hover:-translate-y-0.5">
+                  <div class="flex items-center justify-between">
+                    <div class="h-14 w-14 rounded-full ring-1 ring-emerald-100 bg-gradient-to-br from-emerald-50 to-lime-50 flex items-center justify-center">
+                      <!-- Custom minimal SVG illustration: Trend line + heart -->
+                      <svg viewBox="0 0 48 48" class="h-8 w-8 text-emerald-700" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M8 36h32"></path>
+                        <path d="M10 28l6-6 5 5 7-9 6 6" fill="none"></path>
+                        <path d="M30.5 16.5c1.7-1.7 4.3-1.7 6 0 1.7 1.7 1.7 4.3 0 6l-3 3-3-3c-1.7-1.7-1.7-4.3 0-6z"></path>
+                      </svg>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right h-4 w-4 text-zinc-400 group-hover:text-emerald-600 transition-colors"></svg>
+                  </div>
+                  <h3 class="mt-3 text-[16px] font-semibold tracking-tight text-zinc-900">Progress tracking</h3>
+                  <p class="mt-1.5 text-sm text-zinc-600">
+                    Track outcomes with simple check-ins, symptoms, sleep, and stress trends.
+                  </p>
+                </div>
+    
+                <!-- Feature 4: Admin analytics -->
+                <div class="group rounded-xl bg-white p-5 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all hover:-translate-y-0.5">
+                  <div class="flex items-center justify-between">
+                    <div class="h-14 w-14 rounded-full ring-1 ring-emerald-100 bg-gradient-to-br from-emerald-50 to-lime-50 flex items-center justify-center">
+                      <!-- Custom minimal SVG illustration: Shield + bars -->
+                      <svg viewBox="0 0 48 48" class="h-8 w-8 text-emerald-700" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M24 7c6 4 12 4 16 4v11c0 8-5 12-16 17-11-5-16-9-16-17V11c4 0 10 0 16-4z"></path>
+                        <rect x="14" y="22" width="4" height="10" rx="1"></rect>
+                        <rect x="22" y="19" width="4" height="13" rx="1"></rect>
+                        <rect x="30" y="25" width="4" height="7" rx="1"></rect>
+                      </svg>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right h-4 w-4 text-zinc-400 group-hover:text-emerald-600 transition-colors"></svg>
+                  </div>
+                  <h3 class="mt-3 text-[16px] font-semibold tracking-tight text-zinc-900">Admin analytics</h3>
+                  <p class="mt-1.5 text-sm text-zinc-600">
+                    Clinic-wide insights on capacity, outcomes, and satisfaction—at a glance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <!-- User Journey Previews -->
+          <section id="journeys" class="relative mt-14 sm:mt-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex items-end justify-between">
+                <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">User journeys</h2>
+              </div>
+    
+              <div class="mt-6 grid gap-5 md:grid-cols-3">
+                <!-- Patient -->
+                <div class="rounded-xl bg-white p-4 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="h-8 w-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center ring-1 ring-emerald-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" class="lucide lucide-user h-4 w-4"></svg>
+                      </div>
+                      <h3 class="text-[15.5px] font-semibold tracking-tight text-zinc-900">Patient</h3>
+                    </div>
+                    <span class="text-[11px] text-emerald-800 bg-emerald-50 ring-1 ring-emerald-100 px-2 py-1 rounded-full">Mobile</span>
+                  </div>
+                  <!-- Mock screen -->
+                  <div class="mt-3 rounded-lg border border-zinc-200 overflow-hidden">
+                    <div class="flex items-center justify-between bg-zinc-50 px-3 py-2 border-b border-zinc-200">
+                      <div class="flex items-center gap-2">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&amp;w=120&amp;auto=format&amp;fit=crop" alt="Patient avatar" class="h-6 w-6 rounded-full object-cover">
+                        <span class="text-xs font-medium text-zinc-800">Namaste, Asha</span>
+                      </div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" class="lucide lucide-bell h-4 w-4 text-zinc-500"></svg>
+                    </div>
+                    <div class="p-3">
+                      <div class="rounded-md bg-emerald-50 ring-1 ring-emerald-100 px-3 py-2">
+                        <div class="flex items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles h-4 w-4 text-emerald-700"></svg>
+                          <span class="text-[12px] text-emerald-900">Suggested: Cooling diet + Shirodhara</span>
+                        </div>
+                      </div>
+                      <div class="mt-3 grid grid-cols-2 gap-2">
+                        <button class="rounded-md border border-zinc-200 px-3 py-2 text-[12px] text-zinc-700 hover:border-emerald-200 hover:text-emerald-800 transition">
+                          Book session
+                        </button>
+                        <button class="rounded-md bg-emerald-600 text-white px-3 py-2 text-[12px] hover:bg-emerald-700 transition">
+                          Check-in
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-zinc-600">
+                    Simple check-ins, reminders, and personalized recommendations keep patients engaged.
+                  </p>
+                </div>
+    
+                <!-- Practitioner -->
+                <div class="rounded-xl bg-white p-4 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="h-8 w-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center ring-1 ring-emerald-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="stethoscope" class="lucide lucide-stethoscope h-4 w-4"></svg>
+                      </div>
+                      <h3 class="text-[15.5px] font-semibold tracking-tight text-zinc-900">Practitioner</h3>
+                    </div>
+                    <span class="text-[11px] text-emerald-800 bg-emerald-50 ring-1 ring-emerald-100 px-2 py-1 rounded-full">Tablet</span>
+                  </div>
+                  <!-- Mock screen -->
+                  <div class="mt-3 rounded-lg border border-zinc-200 overflow-hidden">
+                    <div class="flex items-center justify-between bg-zinc-50 px-3 py-2 border-b border-zinc-200">
+                      <span class="text-xs font-medium text-zinc-800">Today</span>
+                      <div class="flex items-center gap-2 text-zinc-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar h-4 w-4"></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search h-4 w-4"></svg>
+                      </div>
+                    </div>
+                    <div class="p-3 grid grid-cols-3 gap-2">
+                      <div class="col-span-2 rounded-md ring-1 ring-zinc-200 p-2">
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11.5px] text-zinc-700">Queue</span>
+                          <span class="text-[11px] text-emerald-700">3 waiting</span>
+                        </div>
+                        <ul class="mt-1 space-y-1">
+                          <li class="flex items-center justify-between text-[11.5px]">
+                            <span class="text-zinc-700">Asha</span><span class="text-zinc-500">09:00</span>
+                          </li>
+                          <li class="flex items-center justify-between text-[11.5px]">
+                            <span class="text-zinc-700">Raj</span><span class="text-zinc-500">09:45</span>
+                          </li>
+                          <li class="flex items-center justify-between text-[11.5px]">
+                            <span class="text-zinc-700">Meera</span><span class="text-zinc-500">10:15</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="rounded-md ring-1 ring-zinc-200 p-2">
+                        <span class="text-[11.5px] text-zinc-700">AI Notes</span>
+                        <p class="mt-1 text-[11px] text-zinc-600 leading-5">Consider Pitta-pacifying herbs; monitor HRV.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-zinc-600">
+                    A calm, focused workspace that reduces clicks and decision fatigue.
+                  </p>
+                </div>
+    
+                <!-- Admin -->
+                <div class="rounded-xl bg-white p-4 ring-1 ring-zinc-200 hover:ring-emerald-200 transition-all">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="h-8 w-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center ring-1 ring-emerald-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="settings" class="lucide lucide-settings h-4 w-4"></svg>
+                      </div>
+                      <h3 class="text-[15.5px] font-semibold tracking-tight text-zinc-900">Admin</h3>
+                    </div>
+                    <span class="text-[11px] text-emerald-800 bg-emerald-50 ring-1 ring-emerald-100 px-2 py-1 rounded-full">Desktop</span>
+                  </div>
+                  <!-- Mock screen -->
+                  <div class="mt-3 rounded-lg border border-zinc-200 overflow-hidden">
+                    <div class="flex items-center justify-between bg-zinc-50 px-3 py-2 border-b border-zinc-200">
+                      <span class="text-xs font-medium text-zinc-800">Overview</span>
+                      <div class="flex items-center gap-2 text-zinc-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sliders-horizontal" class="lucide lucide-sliders-horizontal h-4 w-4"></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" class="lucide lucide-download h-4 w-4"></svg>
+                      </div>
+                    </div>
+                    <div class="p-3 grid grid-cols-3 gap-2">
+                      <div class="rounded-md ring-1 ring-zinc-200 p-2">
+                        <span class="text-[11.5px] text-zinc-700">Utilization</span>
+                        <div class="mt-2 h-2 w-full rounded bg-zinc-100">
+                          <div class="h-2 w-4/5 rounded bg-emerald-500"></div>
+                        </div>
+                        <span class="mt-1 block text-[11px] text-zinc-500">80%</span>
+                      </div>
+                      <div class="rounded-md ring-1 ring-zinc-200 p-2">
+                        <span class="text-[11.5px] text-zinc-700">Wait time</span>
+                        <div class="mt-2 flex items-baseline gap-1">
+                          <span class="text-[13px] font-semibold text-emerald-700">−32%</span>
+                          <span class="text-[11px] text-zinc-500">MoM</span>
+                        </div>
+                      </div>
+                      <div class="rounded-md ring-1 ring-zinc-200 p-2">
+                        <span class="text-[11.5px] text-zinc-700">Satisfaction</span>
+                        <div class="mt-2 flex items-center gap-1 text-emerald-700">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="smile" class="lucide lucide-smile h-4 w-4"></svg>
+                          <span class="text-[13px] font-semibold">4.7/5</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm text-zinc-600">
+                    Insights and controls to keep operations smooth and transparent.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <!-- Dosha Assessment -->
+          <section id="assessment" class="relative mt-16 sm:mt-20">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="rounded-2xl bg-white ring-1 ring-zinc-200 overflow-hidden">
+                <!-- Aura header -->
+                <div id="auraHeader" class="relative px-6 sm:px-8 py-6 sm:py-8 bg-gradient-to-r from-[#f8fafc] via-white to-[#f8fafc]">
+                  <div class="absolute inset-0 pointer-events-none">
+                    <div class="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-[#2563eb]/10 blur-3xl transition-all duration-700" id="auraLeft"></div>
+                    <div class="absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-[#059669]/10 blur-3xl transition-all duration-700" id="auraRight"></div>
+                  </div>
+                  <div class="relative flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                    <div>
+                      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1f2937]">Dosha Assessment</h2>
+                      <p class="mt-1 text-sm text-zinc-600">A Digital Sage’s Journey — discover your unique constitution with gentle guidance.</p>
+                    </div>
+                    <!-- Journey path -->
+                    <div class="sm:min-w-[320px]">
+                      <div class="flex items-center gap-3">
+                        <div class="flex-1 h-2 rounded-full bg-[#e2e8f0] overflow-hidden">
+                          <div id="journeyBar" class="h-2 rounded-full bg-gradient-to-r from-[#2563eb] via-[#059669] to-[#92400e] transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="journeyPct" class="text-xs text-zinc-600 min-w-[30px] text-right">0%</span>
+                      </div>
+                      <div class="mt-2 flex items-center justify-between text-[11px] text-zinc-500">
+                        <span>Physical</span><span>Mental</span><span>Lifestyle</span><span>Reveal</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Content -->
+                <div class="grid lg:grid-cols-12 gap-0">
+                  <!-- Left: Mandala progress (tree/mandala) -->
+                  <aside class="lg:col-span-3 hidden lg:flex flex-col gap-4 p-6 border-r border-zinc-200">
+                    <div class="rounded-lg ring-1 ring-zinc-200 p-4">
+                      <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="flower-2" class="lucide h-4 w-4 text-[#2563eb]"></svg>
+                        <span class="text-sm font-medium text-[#1f2937]">Your journey</span>
+                      </div>
+                      <div class="mt-3 space-y-3">
+                        <div class="flex items-center gap-3">
+                          <div class="h-2 w-2 rounded-full bg-[#2563eb]" id="dot-physical"></div>
+                          <span class="text-xs text-zinc-600">Physical characteristics</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <div class="h-2 w-2 rounded-full bg-zinc-300" id="dot-mental"></div>
+                          <span class="text-xs text-zinc-600">Mental & emotional</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <div class="h-2 w-2 rounded-full bg-zinc-300" id="dot-lifestyle"></div>
+                          <span class="text-xs text-zinc-600">Lifestyle & preferences</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <div class="h-2 w-2 rounded-full bg-zinc-300" id="dot-reveal"></div>
+                          <span class="text-xs text-zinc-600">Grand reveal</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rounded-lg ring-1 ring-zinc-200 p-4">
+                      <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" class="lucide h-4 w-4 text-[#059669]"></svg>
+                        <span class="text-sm font-medium text-[#1f2937]">Dosha energies</span>
+                      </div>
+                      <div class="mt-3 space-y-3">
+                        <div>
+                          <div class="flex items-center justify-between text-xs text-zinc-600"><span>Vata</span><span id="vataVal">0</span></div>
+                          <div class="mt-1 h-2 w-full rounded bg-zinc-100">
+                            <div id="vataBar" class="h-2 rounded bg-[#2563eb] transition-all duration-500" style="width: 0%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between text-xs text-zinc-600"><span>Pitta</span><span id="pittaVal">0</span></div>
+                          <div class="mt-1 h-2 w-full rounded bg-zinc-100">
+                            <div id="pittaBar" class="h-2 rounded bg-[#92400e] transition-all duration-500" style="width: 0%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between text-xs text-zinc-600"><span>Kapha</span><span id="kaphaVal">0</span></div>
+                          <div class="mt-1 h-2 w-full rounded bg-zinc-100">
+                            <div id="kaphaBar" class="h-2 rounded bg-[#059669] transition-all duration-500" style="width: 0%"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </aside>
+    
+                  <!-- Center: Question flow -->
+                  <section class="lg:col-span-6 p-6 sm:p-8">
+                    <div id="questionShell" class="space-y-4">
+                      <div class="flex items-center gap-2 text-xs text-zinc-500">
+                        <span id="sectionTag" class="inline-flex items-center gap-1 rounded-full bg-[#f8fafc] px-2 py-1 ring-1 ring-[#e2e8f0] text-[#2563eb]">
+                          <span class="h-1.5 w-1.5 rounded-full bg-[#2563eb]"></span>
+                          Physical
+                        </span>
+                        <span aria-hidden="true">•</span>
+                        <span id="progressCount">Question 1 of 9</span>
+                      </div>
+    
+                      <!-- Question container -->
+                      <div id="questionCard" class="rounded-xl border border-[#e2e8f0] bg-white p-5 sm:p-6 shadow-sm transition-all duration-300">
+                        <!-- Dynamic title -->
+                        <h3 id="questionTitle" class="text-xl font-semibold tracking-tight text-[#1f2937]">Body frame</h3>
+                        <p id="questionSubtitle" class="mt-1 text-sm text-zinc-600">Choose the figure that feels most like you.</p>
+    
+                        <!-- Dynamic content -->
+                        <div id="questionContent" class="mt-4 grid gap-3"></div>
+    
+                        <!-- Controls -->
+                        <div class="mt-5 flex items-center justify-between">
+                          <button id="btnBack" class="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-zinc-700 ring-1 ring-zinc-200 hover:bg-zinc-50 disabled:opacity-40 disabled:pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-left" class="lucide h-4 w-4"></svg>
+                            Back
+                          </button>
+                          <div class="flex items-center gap-2">
+                            <button id="btnNotSure" class="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-[#2563eb] ring-1 ring-[#e2e8f0] hover:bg-[#f8fafc]">
+                              Not sure
+                            </button>
+                            <button id="btnNext" class="inline-flex items-center gap-2 rounded-md bg-[#059669] px-3.5 py-2 text-sm font-medium text-white ring-1 ring-[#059669]/80 hover:bg-[#047857]">
+                              Next
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide h-4 w-4"></svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <!-- Micro note -->
+                      <p class="text-[12.5px] text-zinc-500">Your story is unfolding. Answers adapt the journey to you.</p>
+                    </div>
+    
+                    <!-- Results (hidden initially) -->
+                    <div id="resultsShell" class="hidden">
+                      <div class="rounded-xl border border-[#e2e8f0] bg-white p-5 sm:p-6 shadow-sm">
+                        <div class="flex items-center justify-between">
+                          <div>
+                            <h3 class="text-xl font-semibold tracking-tight text-[#1f2937]">Your Dosha Mandala</h3>
+                            <p class="mt-1 text-sm text-zinc-600">A snapshot of your Vata, Pitta, and Kapha energies.</p>
+                          </div>
+                          <span id="dominantBadge" class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs ring-1 ring-zinc-200 bg-[#f8fafc] text-zinc-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkle" class="lucide h-3.5 w-3.5"></svg>
+                            Dominant: —
+                          </span>
+                        </div>
+                        <div class="mt-4 grid gap-6 lg:grid-cols-2">
+                          <div class="">
+                            <div class="rounded-lg ring-1 ring-zinc-200 p-3">
+                              <div class="p-2">
+                                <div class="relative">
+                                  <div class="rounded-md bg-[#f8fafc] ring-1 ring-[#e2e8f0] p-3">
+                                    <div class="text-sm text-zinc-600">Energy distribution</div>
+                                    <div class="mt-2">
+                                      <div class="relative">
+                                        <div class="rounded-md bg-white ring-1 ring-zinc-200 p-2">
+                                          <div class="relative">
+                                            <div class="p-2">
+                                              <div>
+                                                <div class="rounded-md bg-white ring-1 ring-zinc-200 p-3">
+                                                  <div class="">
+                                                    <div class="">
+                                                      <div class="">
+                                                        <div class="relative">
+                                                          <div class="">
+                                                            <div class="">
+                                                              <div class="">
+                                                                <div class="">
+                                                                  <div class="">
+                                                                    <div class="">
+                                                                      <div class="">
+                                                                        <div class="relative">
+                                                                          <div class="">
+                                                                            <div class="">
+                                                                              <div class="">
+                                                                                <!-- Chart wrapper to avoid growth bug -->
+                                                                                <div class="mt-2"><div class="relative h-[280px]">
+                                                                                  <canvas id="mandalaChart" aria-label="Dosha mandala chart"></canvas>
+                                                                                </div></div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Insights -->
+                          <div class="space-y-3">
+                            <div id="insightPrimary" class="rounded-lg ring-1 ring-zinc-200 p-4 bg-[#f8fafc]">
+                              <div class="flex items-center gap-2">
+                                <div id="insightIcon" class="h-8 w-8 rounded-full flex items-center justify-center ring-1 ring-zinc-200 bg-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" class="lucide h-4 w-4"></svg>
+                                </div>
+                                <h4 id="insightTitle" class="text-[15.5px] font-semibold tracking-tight text-[#1f2937]">Personalized guidance</h4>
+                              </div>
+                              <p id="insightText" class="mt-2 text-sm text-zinc-600">Your tailored lifestyle and nutrition tips will appear here.</p>
+                            </div>
+                            <div class="rounded-lg ring-1 ring-zinc-200 p-4">
+                              <div class="flex items-center gap-2 text-sm text-zinc-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" class="lucide h-4 w-4 text-[#2563eb]"></svg>
+                                Explore your results deeply
+                              </div>
+                              <ul id="insightList" class="mt-2 space-y-1.5 text-[13px] text-zinc-600">
+                                <li>Sleep, movement, and diet recommendations tuned to your constitution.</li>
+                                <li>Mindfulness practices to balance energies.</li>
+                                <li>Seasonal tips that adapt through the year.</li>
+                              </ul>
+                            </div>
+                            <div class="flex items-center gap-2">
+                              <a href="#cta" class="inline-flex items-center gap-2 rounded-md bg-[#059669] px-3.5 py-2 text-sm font-medium text-white ring-1 ring-[#059669]/80 hover:bg-[#047857]">
+                                Book a consultation
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide h-4 w-4"></svg>
+                              </a>
+                              <button id="btnRetake" class="inline-flex items-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium text-[#2563eb] ring-1 ring-[#e2e8f0] hover:bg-[#f8fafc]">
+                                Retake
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="refresh-ccw" class="lucide h-4 w-4"></svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="mt-3 text-[12.5px] text-zinc-500">Save to your profile and receive evolving recommendations.</p>
+                    </div>
+                  </section>
+    
+                  <!-- Right: Contextual visuals -->
+                  <aside class="lg:col-span-3 p-6 border-t lg:border-t-0 border-zinc-200">
+                    <div class="rounded-xl ring-1 ring-zinc-200 p-5 bg-[#f8fafc]">
+                      <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="landscape" class="lucide h-4 w-4 text-[#92400e]"></svg>
+                        <span class="text-sm font-medium text-[#1f2937]" id="seasonTitle">Seasonal lens</span>
+                      </div>
+                      <p id="seasonText" class="mt-2 text-[13px] text-zinc-600">Visuals adapt as your energies unfold.</p>
+                      <div class="mt-3 h-28 rounded-lg bg-white ring-1 ring-zinc-200 flex items-center justify-center">
+                        <div id="seasonScene" class="flex items-center gap-2 text-[12.5px] text-zinc-600">
+                          <div class="h-3 w-3 rounded-full bg-[#2563eb]/70"></div>
+                          <span>Calm winds (Vata)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-4 rounded-xl ring-1 ring-zinc-200 p-5">
+                      <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" class="lucide h-4 w-4 text-[#2563eb]"></svg>
+                        <span class="text-sm font-medium text-[#1f2937]">Tip</span>
+                      </div>
+                      <p class="mt-2 text-[13px] text-zinc-600">Long-press on options to learn more about Sanskrit terms.</p>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <!-- Impact Metrics -->
+          <section id="impact" class="relative mt-16 sm:mt-20">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-zinc-200">
+                <div class="flex items-end justify-between">
+                  <h2 class="text-xl sm:text-2xl font-semibold tracking-tighttext-zinc-900">Measured impact</h2>
+                  <p class="text-xs sm:text-sm text-zinc-600">Clinics report meaningful operational and patient outcomes within weeks.</p>
+                </div>
+    
+                <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  <div class="group rounded-xl ring-1 ring-zinc-200 p-5 bg-white hover:ring-emerald-200 transition">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-zinc-700">Wait times</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"></path><path d="M19 9l-5 5-4-4-3 3"></path></svg>
+                    </div>
+                    <div class="mt-3 text-2xl font-semibold tracking-tight text-emerald-700">−32%</div>
+                    <p class="mt-1 text-xs text-zinc-500">After optimizing schedules</p>
+                    <div class="mt-3 h-2 w-full rounded bg-zinc-100 overflow-hidden">
+                      <div class="h-2 w-2/3 bg-emerald-500 rounded"></div>
+                    </div>
+                  </div>
+    
+                  <div class="group rounded-xl ring-1 ring-zinc-200 p-5 bg-white hover:ring-emerald-200 transition">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-zinc-700">Satisfaction</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12A8 8 0 1 1 4 12a8 8 0 0 1 16 0Z"/><path d="M15 10h.01"/><path d="M9 10h.01"/><path d="M7.5 15h9a4.5 4.5 0 0 1-9 0Z"/></svg>
+                    </div>
+                    <div class="mt-3 text-2xl font-semibold tracking-tight text-emerald-700">4.7/5</div>
+                    <p class="mt-1 text-xs text-zinc-500">Based on patient NPS</p>
+                    <div class="mt-3 flex items-end gap-1 h-14">
+                      <div class="w-2 flex-1 bg-emerald-100 rounded"></div>
+                      <div class="w-2 flex-1 bg-emerald-200 rounded h-8"></div>
+                      <div class="w-2 flex-1 bg-emerald-300 rounded h-10"></div>
+                      <div class="w-2 flex-1 bg-emerald-400 rounded h-12"></div>
+                      <div class="w-2 flex-1 bg-emerald-500 rounded h-14"></div>
+                    </div>
+                  </div>
+    
+                  <div class="group rounded-xl ring-1 ring-zinc-200 p-5 bg-white hover:ring-emerald-200 transition">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-zinc-700">Adherence</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <div class="mt-3 text-2xl font-semibold tracking-tight text-emerald-700">+26%</div>
+                    <p class="mt-1 text-xs text-zinc-500">Daily check-ins completed</p>
+                    <div class="mt-3 h-2 w-full rounded bg-zinc-100 overflow-hidden">
+                      <div class="h-2 w-3/4 bg-emerald-500 rounded"></div>
+                    </div>
+                  </div>
+    
+                  <div class="group rounded-xl ring-1 ring-zinc-200 p-5 bg-white hover:ring-emerald-200 transition">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-zinc-700">Time saved</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="mt-3 text-2xl font-semibold tracking-tight text-emerald-700">6h/week</div>
+                    <p class="mt-1 text-xs text-zinc-500">Per practitioner</p>
+                    <div class="mt-3 flex items-center gap-2 text-[11.5px] text-zinc-600">
+                      <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-800 ring-1 ring-emerald-100 px-2 py-0.5">+ Automations</span>
+                      <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-800 ring-1 ring-emerald-100 px-2 py-0.5">+ Templates</span>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="mt-6 rounded-lg bg-zinc-50 ring-1 ring-zinc-200 p-4 sm:p-5">
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16 4h-3a2 2 0 0 0-2 2v12"/><path d="M7 9h5"/></svg>
+                      <p class="text-xs sm:text-sm text-zinc-700">Fully anonymized analytics with role-based access.</p>
+                    </div>
+                    <a href="#cta" class="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition">
+                      See how it works
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          <!-- CTA -->
+          <section id="cta" class="relative mt-16 sm:mt-20">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="grid lg:grid-cols-2 gap-6">
+                <div class="rounded-2xl bg-white ring-1 ring-zinc-200 p-6 sm:p-8">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7z"/></svg>
+                    <h3 class="text-xl font-semibold tracking-tight text-zinc-900">Begin your Ayurveda journey</h3>
+                  </div>
+                  <p class="mt-2 text-sm text-zinc-600">Start with the Dosha Assessment and receive an onboarding kit tailored to your clinic or home practice.</p>
+                  <form class="mt-5 grid gap-3" onsubmit="event.preventDefault(); document.getElementById('ctaSuccess').classList.remove('hidden'); this.reset();">
+                    <label class="block">
+                      <span class="text-xs text-zinc-600">Email</span>
+                      <input type="email" required placeholder="you@clinic.com" class="mt-1 w-full rounded-md border-zinc-200 focus:border-emerald-400 focus:ring-emerald-400/30">
+                    </label>
+                    <label class="block">
+                      <span class="text-xs text-zinc-600">Role</span>
+                      <select class="mt-1 w-full rounded-md border-zinc-200 focus:border-emerald-400 focus:ring-emerald-400/30">
+                        <option>Practitioner</option>
+                        <option>Clinic admin</option>
+                        <option>Patient</option>
+                        <option>Researcher</option>
+                      </select>
+                    </label>
+                    <button type="submit" class="mt-1 inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-medium text-white ring-1 ring-emerald-500 hover:bg-emerald-700 hover:ring-emerald-600 transition">
+                      Request access
+                      <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                    <p id="ctaSuccess" class="hidden text-xs text-emerald-700 bg-emerald-50 ring-1 ring-emerald-100 rounded-md px-3 py-2">Thank you! We’ll be in touch shortly.</p>
+                  </form>
+                </div>
+                <div class="rounded-2xl ring-1 ring-emerald-200 bg-gradient-to-br from-emerald-50 to-lime-50 p-6 sm:p-8">
+                  <div class="flex items-center gap-2 text-emerald-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"/><circle cx="12" cy="7" r="4"/></svg>
+                    <h3 class="text-xl font-semibold tracking-tight">What you get</h3>
+                  </div>
+                  <ul class="mt-3 space-y-2 text-sm text-emerald-900">
+                    <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg> Guided dosha assessment with personalized results.</li>
+                    <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg> Clinic templates for scheduling and check-ins.</li>
+                    <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg> HIPAA-ready architecture and best practices.</li>
+                  </ul>
+                  <div class="mt-5 rounded-lg bg-white ring-1 ring-emerald-200 p-4">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-emerald-900">Onboarding time</span>
+                      <span class="text-sm font-semibold text-emerald-700">Under 1 week</span>
+                    </div>
+                    <div class="mt-3 h-2 w-full rounded bg-emerald-100 overflow-hidden">
+                      <div class="h-2 rounded bg-emerald-500 w-5/6"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+    
+        <!-- Footer -->
+        <footer class="mt-20 border-t border-zinc-200">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-10 grid gap-8 sm:grid-cols-3">
+              <div>
+                <a href="#" class="flex items-center gap-2" aria-label="AyurSutra Home">
+                  <div class="h-8 w-8 rounded-md bg-emerald-600 text-white flex items-center justify-center ring-1 ring-emerald-500/70">
+                    <span class="text-[12px] font-semibold">AS</span>
+                  </div>
+                  <span class="text-sm font-semibold tracking-tight text-zinc-900">AyurSutra</span>
+                </a>
+                <p class="mt-3 text-sm text-zinc-600">AI-powered Ayurveda workflows for calm, efficient care.</p>
+              </div>
+              <div class="grid grid-cols-2 gap-6 sm:col-span-2">
+                <div>
+                  <h4 class="text-sm font-semibold text-zinc-900">Product</h4>
+                  <ul class="mt-2 space-y-2 text-sm text-zinc-600">
+                    <li><a href="#features" class="hover:text-emerald-700">Features</a></li>
+                    <li><a href="#assessment" class="hover:text-emerald-700">Assessment</a></li>
+                    <li><a href="#impact" class="hover:text-emerald-700">Impact</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-zinc-900">Company</h4>
+                  <ul class="mt-2 space-y-2 text-sm text-zinc-600">
+                    <li><a href="#cta" class="hover:text-emerald-700">Get started</a></li>
+                    <li><a href="#" class="hover:text-emerald-700">Privacy</a></li>
+                    <li><a href="#" class="hover:text-emerald-700">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-t border-zinc-200 text-xs text-zinc-500 flex items-center justify-between">
+              <span>© <span id="yearSpan"></span> AyurSutra. All rights reserved.</span>
+              <span>Made with care and balance.</span>
+            </div>
+          </div>
+        </footer>
+    
+        <!-- Scripts -->
+        <script>
+          // Icon replacement
+          document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide && lucide.createIcons) lucide.createIcons();
+            const yearSpan = document.getElementById('yearSpan');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+          });
+    
+          // Assessment logic
+          const questions = [
+            // Physical (0-2)
+            {
+              section: 'Physical',
+              title: 'Body frame',
+              subtitle: 'Choose the figure that feels most like you.',
+              type: 'choice',
+              options: [
+                { label: 'Light & lean', tag: 'Vata', info: 'Vata: air + ether; light and mobile.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Medium & athletic', tag: 'Pitta', info: 'Pitta: fire + water; sharp and warm.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Sturdy & grounded', tag: 'Kapha', info: 'Kapha: earth + water; steady and cool.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Physical',
+              title: 'Skin & temperature',
+              subtitle: 'Notice your baseline skin feel and warmth.',
+              type: 'choice',
+              options: [
+                { label: 'Dry, cool hands', tag: 'Vata', info: 'Dryness and coolness align with Vata.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Warm, may flush', tag: 'Pitta', info: 'Warmth and flushing align with Pitta.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Smooth, cool/moist', tag: 'Kapha', info: 'Moisture and coolness align with Kapha.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Physical',
+              title: 'Appetite rhythm',
+              subtitle: 'From gentle to intense hunger.',
+              type: 'slider',
+              min: 1, max: 5, value: 3,
+              scaleLabels: ['Gentle', 'Steady', 'Strong'],
+              scoreMap: (val) => {
+                if (val <= 2) return { vata: 2, pitta: 0, kapha: 0 };
+                if (val === 3) return { vata: 0, pitta: 0, kapha: 2 };
+                return { vata: 0, pitta: 2, kapha: 0 };
+              }
+            },
+            // Mental (3-5)
+            {
+              section: 'Mental',
+              title: 'Mind pace',
+              subtitle: 'How does your mind usually flow?',
+              type: 'choice',
+              options: [
+                { label: 'Quick & creative', tag: 'Vata', info: 'Vata minds are imaginative and fast.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Sharp & driven', tag: 'Pitta', info: 'Pitta minds are analytical and focused.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Calm & steady', tag: 'Kapha', info: 'Kapha minds are tranquil and consistent.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Mental',
+              title: 'Emotional tendency',
+              subtitle: 'What arises most often under stress?',
+              type: 'choice',
+              options: [
+                { label: 'Worry or restlessness', tag: 'Vata', info: 'Vata can increase anxiety and movement.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Irritability or heat', tag: 'Pitta', info: 'Pitta can increase intensity and heat.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Withdrawal or heaviness', tag: 'Kapha', info: 'Kapha can increase inertia and attachment.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Mental',
+              title: 'Sleep quality',
+              subtitle: 'How would you describe your sleep most nights?',
+              type: 'slider',
+              min: 1, max: 5, value: 3,
+              scaleLabels: ['Light', 'Average', 'Deep'],
+              scoreMap: (val) => {
+                if (val <= 2) return { vata: 2, pitta: 0, kapha: 0 };
+                if (val === 3) return { vata: 0, pitta: 2, kapha: 0 };
+                return { vata: 0, pitta: 0, kapha: 2 };
+              }
+            },
+            // Lifestyle (6-8)
+            {
+              section: 'Lifestyle',
+              title: 'Climate preference',
+              subtitle: 'Which environment do you naturally choose?',
+              type: 'choice',
+              options: [
+                { label: 'Warm & humid', tag: 'Vata', info: 'Warmth helps balance Vata\'s cool quality.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Cool & fresh air', tag: 'Pitta', info: 'Coolness soothes Pitta\'s heat.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Dry & bright', tag: 'Kapha', info: 'Dryness lightens Kapha\'s heaviness.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Lifestyle',
+              title: 'Activity style',
+              subtitle: 'Your movement rhythm most days.',
+              type: 'choice',
+              options: [
+                { label: 'Spontaneous bursts', tag: 'Vata', info: 'Irregular, playful movement.', score: { vata: 2, pitta: 0, kapha: 0 } },
+                { label: 'Intense & competitive', tag: 'Pitta', info: 'Goal-driven and fiery.', score: { vata: 0, pitta: 2, kapha: 0 } },
+                { label: 'Steady endurance', tag: 'Kapha', info: 'Consistent and grounded.', score: { vata: 0, pitta: 0, kapha: 2 } },
+              ]
+            },
+            {
+              section: 'Lifestyle',
+              title: 'Routine consistency',
+              subtitle: 'From flexible to structured.',
+              type: 'slider',
+              min: 1, max: 5, value: 3,
+              scaleLabels: ['Fluid', 'Balanced', 'Structured'],
+              scoreMap: (val) => {
+                if (val <= 2) return { vata: 2, pitta: 0, kapha: 0 };
+                if (val === 3) return { vata: 0, pitta: 2, kapha: 0 };
+                return { vata: 0, pitta: 0, kapha: 2 };
+              }
+            }
+          ];
+    
+          const state = {
+            index: 0,
+            selected: null,
+            dosha: { vata: 0, pitta: 0, kapha: 0 },
+            chart: null
+          };
+    
+          // Elements
+          const questionShell = document.getElementById('questionShell');
+          const resultsShell = document.getElementById('resultsShell');
+          const questionTitle = document.getElementById('questionTitle');
+          const questionSubtitle = document.getElementById('questionSubtitle');
+          const questionContent = document.getElementById('questionContent');
+          const btnBack = document.getElementById('btnBack');
+          const btnNext = document.getElementById('btnNext');
+          const btnNotSure = document.getElementById('btnNotSure');
+          const btnRetake = document.getElementById('btnRetake');
+          const progressCount = document.getElementById('progressCount');
+          const sectionTag = document.getElementById('sectionTag');
+          const journeyBar = document.getElementById('journeyBar');
+          const journeyPct = document.getElementById('journeyPct');
+          const auraLeft = document.getElementById('auraLeft');
+          const auraRight = document.getElementById('auraRight');
+    
+          // Left panel bars
+          const vataBar = document.getElementById('vataBar');
+          const pittaBar = document.getElementById('pittaBar');
+          const kaphaBar = document.getElementById('kaphaBar');
+          const vataVal = document.getElementById('vataVal');
+          const pittaVal = document.getElementById('pittaVal');
+          const kaphaVal = document.getElementById('kaphaVal');
+    
+          // Dots
+          const dotPhysical = document.getElementById('dot-physical');
+          const dotMental = document.getElementById('dot-mental');
+          const dotLifestyle = document.getElementById('dot-lifestyle');
+          const dotReveal = document.getElementById('dot-reveal');
+    
+          // Results
+          const dominantBadge = document.getElementById('dominantBadge');
+          const insightTitle = document.getElementById('insightTitle');
+          const insightText = document.getElementById('insightText');
+          const insightIcon = document.getElementById('insightIcon');
+          const seasonTitle = document.getElementById('seasonTitle');
+          const seasonText = document.getElementById('seasonText');
+          const seasonScene = document.getElementById('seasonScene');
+    
+          const totalQ = questions.length;
+    
+          function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+    
+          function updateLeftBars() {
+            const total = state.dosha.vata + state.dosha.pitta + state.dosha.kapha || 1;
+            const vPct = Math.round((state.dosha.vata / total) * 100);
+            const pPct = Math.round((state.dosha.pitta / total) * 100);
+            const kPct = Math.round((state.dosha.kapha / total) * 100);
+            vataBar.style.width = vPct + '%';
+            pittaBar.style.width = pPct + '%';
+            kaphaBar.style.width = kPct + '%';
+            vataVal.textContent = vPct + '%';
+            pittaVal.textContent = pPct + '%';
+            kaphaVal.textContent = kPct + '%';
+          }
+    
+          function updateJourney() {
+            const i = state.index;
+            const pct = Math.round((i / totalQ) * 100);
+            journeyBar.style.width = pct + '%';
+            journeyPct.textContent = pct + '%';
+            progressCount.textContent = 'Question ' + (i + 1) + ' of ' + totalQ;
+    
+            const section = questions[i]?.section || 'Reveal';
+            const colorMap = {
+              Physical: '#2563eb',
+              Mental: '#059669',
+              Lifestyle: '#92400e',
+              Reveal: '#1f2937'
+            };
+            sectionTag.innerHTML = '<span class="h-1.5 w-1.5 rounded-full" style="background:' + (colorMap[section] || '#2563eb') + '"></span>' + ' ' + section;
+    
+            dotPhysical.className = 'h-2 w-2 rounded-full ' + (i >= 0 ? 'bg-[#2563eb]' : 'bg-zinc-300');
+            dotMental.className = 'h-2 w-2 rounded-full ' + (i >= 3 ? 'bg-[#059669]' : 'bg-zinc-300');
+            dotLifestyle.className = 'h-2 w-2 rounded-full ' + (i >= 6 ? 'bg-[#92400e]' : 'bg-zinc-300');
+            dotReveal.className = 'h-2 w-2 rounded-full ' + (i >= 8 ? 'bg-zinc-800' : 'bg-zinc-300');
+    
+            // Aura shift
+            if (section === 'Physical') {
+              auraLeft.style.background = 'rgba(37,99,235,0.12)';
+              auraRight.style.background = 'rgba(5,150,105,0.12)';
+            } else if (section === 'Mental') {
+              auraLeft.style.background = 'rgba(5,150,105,0.12)';
+              auraRight.style.background = 'rgba(146,64,14,0.12)';
+            } else if (section === 'Lifestyle') {
+              auraLeft.style.background = 'rgba(146,64,14,0.12)';
+              auraRight.style.background = 'rgba(37,99,235,0.12)';
+            }
+          }
+    
+          function buildChoiceOption(opt, idx) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'group relative text-left rounded-lg ring-1 ring-zinc-200 hover:ring-emerald-200 hover:bg-emerald-50/40 transition p-3 flex items-start gap-3 focus:outline-none focus:ring-2 focus:ring-emerald-400';
+            btn.setAttribute('data-index', idx);
+            btn.setAttribute('aria-pressed', 'false');
+    
+            const badge = document.createElement('span');
+            badge.className = 'inline-flex shrink-0 items-center justify-center h-7 w-7 rounded-full ring-1 ring-zinc-200 bg-white text-[11px] font-medium text-zinc-700';
+            badge.textContent = opt.tag[0];
+    
+            const textWrap = document.createElement('div');
+            textWrap.className = 'min-w-0';
+            const label = document.createElement('div');
+            label.className = 'text-sm font-medium text-zinc-800';
+            label.textContent = opt.label;
+            const tag = document.createElement('div');
+            tag.className = 'mt-0.5 inline-flex items-center gap-1 text-[11px] text-emerald-700';
+            tag.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> ' + opt.tag;
+    
+            textWrap.append(label, tag);
+            btn.append(badge, textWrap);
+    
+            // Long press tooltip
+            let pressTimer = null;
+            let tipEl = null;
+            const showTip = () => {
+              if (tipEl) return;
+              tipEl = document.createElement('div');
+              tipEl.className = 'absolute z-20 top-full left-0 mt-2 max-w-xs rounded-md bg-white ring-1 ring-zinc-200 shadow p-2 text-xs text-zinc-700';
+              tipEl.textContent = opt.info;
+              btn.appendChild(tipEl);
+            };
+            const hideTip = () => {
+              if (tipEl) { tipEl.remove(); tipEl = null; }
+            };
+            btn.addEventListener('mousedown', () => { pressTimer = setTimeout(showTip, 500); });
+            btn.addEventListener('touchstart', () => { pressTimer = setTimeout(showTip, 500); }, { passive: true });
+            ['mouseup','mouseleave','touchend','touchcancel','blur'].forEach(evt => {
+              btn.addEventListener(evt, () => { clearTimeout(pressTimer); hideTip(); });
+            });
+    
+            btn.addEventListener('click', () => {
+              state.selected = idx;
+              // Reset all styles
+              [...questionContent.querySelectorAll('button[data-index]')].forEach(b => {
+                b.setAttribute('aria-pressed', 'false');
+                b.classList.remove('ring-emerald-300','bg-emerald-50');
+              });
+              btn.setAttribute('aria-pressed', 'true');
+              btn.classList.add('ring-emerald-300','bg-emerald-50');
+              btnNext.disabled = false;
+            });
+    
+            return btn;
+          }
+    
+          function buildSlider(q) {
+            const wrap = document.createElement('div');
+            wrap.className = 'space-y-3';
+    
+            const range = document.createElement('input');
+            range.type = 'range';
+            range.min = q.min; range.max = q.max;
+            range.value = q.value;
+            range.className = 'w-full accent-emerald-600';
+            range.setAttribute('aria-label', 'Adjust value');
+    
+            const scale = document.createElement('div');
+            scale.className = 'flex items-center justify-between text-[11px] text-zinc-500';
+            scale.innerHTML = '<span>' + q.scaleLabels[0] + '</span><span>' + q.scaleLabels[1] + '</span><span>' + q.scaleLabels[2] + '</span>';
+    
+            const bubble = document.createElement('div');
+            bubble.className = 'text-xs text-emerald-700 bg-emerald-50 ring-1 ring-emerald-100 inline-flex items-center gap-1 px-2 py-1 rounded';
+            bubble.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> ' + q.value;
+    
+            range.addEventListener('input', () => {
+              bubble.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> ' + range.value;
+              state.selected = parseInt(range.value, 10);
+              btnNext.disabled = false;
+            });
+    
+            wrap.append(range, bubble, scale);
+            // Preselect default and enable next
+            state.selected = parseInt(range.value, 10);
+            btnNext.disabled = false;
+            return wrap;
+          }
+    
+          function renderQuestion() {
+            const q = questions[state.index];
+            if (!q) return;
+    
+            // Reset
+            questionContent.innerHTML = '';
+            questionTitle.textContent = q.title;
+            questionSubtitle.textContent = q.subtitle;
+            btnNext.disabled = true;
+            btnBack.disabled = state.index === 0;
+    
+            if (q.type === 'choice') {
+              const grid = document.createElement('div');
+              grid.className = 'grid sm:grid-cols-3 gap-3';
+              q.options.forEach((opt, idx) => grid.appendChild(buildChoiceOption(opt, idx)));
+              questionContent.appendChild(grid);
+            } else if (q.type === 'slider') {
+              questionContent.appendChild(buildSlider(q));
+            }
+            updateJourney();
+          }
+    
+          function applySelection() {
+            const q = questions[state.index];
+            if (!q) return;
+            if (q.type === 'choice') {
+              const sel = q.options[state.selected];
+              if (sel && sel.score) {
+                state.dosha.vata += sel.score.vata;
+                state.dosha.pitta += sel.score.pitta;
+                state.dosha.kapha += sel.score.kapha;
+              }
+            } else {
+              const val = clamp(parseInt(state.selected, 10) || q.value, q.min, q.max);
+              const s = q.scoreMap(val);
+              state.dosha.vata += s.vata;
+              state.dosha.pitta += s.pitta;
+              state.dosha.kapha += s.kapha;
+            }
+            updateLeftBars();
+          }
+    
+          function handleNotSure() {
+            // Gentle, neutral increment
+            state.dosha.vata += 1;
+            state.dosha.pitta += 1;
+            state.dosha.kapha += 1;
+            updateLeftBars();
+            goNext(false);
+          }
+    
+          function goNext(apply = true) {
+            if (apply) applySelection();
+            state.index++;
+            state.selected = null;
+    
+            if (state.index >= totalQ) {
+              revealResults();
+            } else {
+              renderQuestion();
+            }
+          }
+    
+          function goBack() {
+            if (state.index === 0) return;
+            // Simple back: step back index and re-render. For brevity we don't undo past scores precisely.
+            state.index = Math.max(0, state.index - 1);
+            renderQuestion();
+          }
+    
+          function dominantDosha() {
+            const { vata, pitta, kapha } = state.dosha;
+            const max = Math.max(vata, pitta, kapha);
+            if (max === vata) return 'Vata';
+            if (max === pitta) return 'Pitta';
+            return 'Kapha';
+          }
+    
+          function updateAuraForDominant(dom) {
+            if (dom === 'Vata') { auraLeft.style.background = 'rgba(37,99,235,0.14)'; auraRight.style.background = 'rgba(37,99,235,0.08)'; }
+            if (dom === 'Pitta') { auraLeft.style.background = 'rgba(146,64,14,0.14)'; auraRight.style.background = 'rgba(146,64,14,0.08)'; }
+            if (dom === 'Kapha') { auraLeft.style.background = 'rgba(5,150,105,0.14)'; auraRight.style.background = 'rgba(5,150,105,0.08)'; }
+          }
+    
+          function updateSeasonLens(dom) {
+            if (dom === 'Vata') {
+              seasonTitle.textContent = 'Seasonal lens — Vata';
+              seasonText.textContent = 'Warmth, oiling, and grounding routines support you.';
+              seasonScene.innerHTML = '<div class="h-3 w-3 rounded-full bg-[#2563eb]/70"></div><span>Calm winds (Vata)</span>';
+            } else if (dom === 'Pitta') {
+              seasonTitle.textContent = 'Seasonal lens — Pitta';
+              seasonText.textContent = 'Cooling foods, moonlight walks, and gentle breathwork.';
+              seasonScene.innerHTML = '<div class="h-3 w-3 rounded-full bg-[#92400e]/70"></div><span>Cool waters (Pitta)</span>';
+            } else {
+              seasonTitle.textContent = 'Seasonal lens — Kapha';
+              seasonText.textContent = 'Light, warming spices and invigorating movement.';
+              seasonScene.innerHTML = '<div class="h-3 w-3 rounded-full bg-[#059669]/70"></div><span>Morning sun (Kapha)</span>';
+            }
+          }
+    
+          function insightsFor(dom) {
+            const map = {
+              Vata: {
+                title: 'Ground and nourish',
+                text: 'Prioritize warm, cooked meals with healthy oils, consistent routines, and calming evening rituals.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 18 0"/><path d="M12 3v18"/></svg>'
+              },
+              Pitta: {
+                title: 'Soothe and cool',
+                text: 'Invite moderation and cooling influences; aloe, coriander, and moon salutations can harmonize heat.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v20"/></svg>'
+              },
+              Kapha: {
+                title: 'Lighten and uplift',
+                text: 'Favor light, spicy meals and energizing routines; welcome variety and early morning movement.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="lucide h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l4 8-8 0 4-8z"/><path d="M2 20h20"/></svg>'
+              }
+            };
+            return map[dom];
+          }
+    
+          function revealResults() {
+            // Update progress UI to reveal
+            journeyBar.style.width = '100%';
+            journeyPct.textContent = '100%';
+            dotReveal.className = 'h-2 w-2 rounded-full bg-zinc-800';
+    
+            // Show results
+            questionShell.classList.add('hidden');
+            resultsShell.classList.remove('hidden');
+    
+            const dom = dominantDosha();
+            dominantBadge.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="lucide h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.4 4.9L20 9l-4 3.9.9 5.6L12 16.9 7.1 18.5 8 12.9 4 9l5.6-1.1L12 3z"/></svg> Dominant: ' + dom;
+    
+            const tip = insightsFor(dom);
+            insightTitle.textContent = tip.title;
+            insightText.textContent = tip.text;
+            insightIcon.innerHTML = tip.icon;
+    
+            updateAuraForDominant(dom);
+            updateSeasonLens(dom);
+            renderChart();
+          }
+    
+          function renderChart() {
+            const ctx = document.getElementById('mandalaChart').getContext('2d');
+            const data = [state.dosha.vata, state.dosha.pitta, state.dosha.kapha];
+            const total = data.reduce((a,b)=>a+b,0) || 1;
+            const pctData = data.map(v => Math.round((v/total)*100));
+    
+            if (state.chart) state.chart.destroy();
+            state.chart = new Chart(ctx, {
+              type: 'radar',
+              data: {
+                labels: ['Vata','Pitta','Kapha'],
+                datasets: [{
+                  label: 'Dosha',
+                  data: pctData,
+                  borderColor: 'rgba(16,185,129,0.8)',
+                  backgroundColor: 'rgba(16,185,129,0.15)',
+                  pointBackgroundColor: ['#2563eb','#92400e','#059669'],
+                  pointBorderColor: '#fff',
+                  pointBorderWidth: 2,
+                  borderWidth: 2
+                }]
+              },
+              options: {
+                responsive: true,
+                scales: {
+                  r: {
+                    angleLines: { color: 'rgba(0,0,0,0.06)' },
+                    grid: { color: 'rgba(0,0,0,0.06)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false },
+                    pointLabels: {
+                      color: '#374151',
+                      font: { size: 12 }
+                    }
+                  }
+                },
+                plugins: {
+                  legend: { display: false },
+                  tooltip: {
+                    callbacks: {
+                      label: ctx => ctx.parsed.r + '%'
+                    }
+                  }
+                }
+              }
+            });
+          }
+    
+          // Controls
+          btnNext.addEventListener('click', () => goNext(true));
+          btnBack.addEventListener('click', goBack);
+          btnNotSure.addEventListener('click', handleNotSure);
+          btnRetake.addEventListener('click', () => {
+            // Reset state
+            state.index = 0;
+            state.selected = null;
+            state.dosha = { vata: 0, pitta: 0, kapha: 0 };
+            updateLeftBars();
+            questionShell.classList.remove('hidden');
+            resultsShell.classList.add('hidden');
+            renderQuestion();
+            window.scrollTo({ top: document.getElementById('assessment').offsetTop - 80, behavior: 'smooth' });
+          });
+    
+          // Keyboard: Enter to Next
+          document.addEventListener('keydown', (e) => {
+            if (resultsShell.classList.contains('hidden') && (e.key === 'Enter')) {
+              if (!btnNext.disabled) btnNext.click();
+            }
+          });
+    
+          // Initialize
+          updateLeftBars();
+          renderQuestion();
+        </script>
+      </body>
+    </html>

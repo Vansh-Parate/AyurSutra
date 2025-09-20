@@ -31,7 +31,7 @@ const ProgressChart: React.FC = () => {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            y: { beginAtZero: true, grid: { color: 'rgba(148,163,184,0.15)' }, ticks: { color: '#475569', stepSize: 2, max: 10 } },
+            y: { beginAtZero: true, grid: { color: 'rgba(148,163,184,0.15)' }, ticks: { color: '#475569', stepSize: 2 }, max: 10 },
             x: { grid: { display: false }, ticks: { color: '#475569' } }
           },
           plugins: { legend: { display: false } },

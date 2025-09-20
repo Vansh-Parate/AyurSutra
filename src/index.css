@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+html {
+	scroll-behavior: smooth;
+}
+
+/* Offset anchor sections for sticky header */
+[id] {
+	scroll-margin-top: 80px;
+}
+
 /* Hide built-in password reveal/clear icons (Edge/IE variants) */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear,

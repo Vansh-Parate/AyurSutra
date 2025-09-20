@@ -3,13 +3,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
-import BackgroundMotifs from './components/BackgroundMotifs'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Features from './components/Features'
-import Journeys from './components/Journeys'
-import Impact from './components/Impact'
-import Cta from './components/CTA'
+import LandingPage from './components/landing/LandingPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import Signin from './auth/Signin'
 import Signup from './auth/Signup'
@@ -19,25 +13,6 @@ import PractitionerDashboard from './components/dashboard/practitioner/Practitio
 import AdminDashboard from './components/dashboard/AdminDashboard'
 import AssessmentPage from './components/assessment/AssessmentPage'
 import AssessmentSummaryPage from './components/assessment/AssessmentSummaryPage.tsx'
-
-function LandingPage() {
-	return (
-		<>
-			<a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:m-4 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-sm focus:ring-1 focus:ring-emerald-400">Skip to content</a>
-			<BackgroundMotifs />
-			<div>
-				<Header />
-				<main id="main">
-					<Hero />
-					<Features />
-					<Journeys />
-					<Impact />
-                    <Cta />
-				</main>
-			</div>
-		</>
-	)
-}
 
 function Dashboard() {
 	const { user } = useAuth()

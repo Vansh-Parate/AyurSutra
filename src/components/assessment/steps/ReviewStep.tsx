@@ -81,6 +81,8 @@ const ReviewStep: React.FC<ReviewStepProps> = ({ data, onBack, onFinish, onEditS
       canContinue={true}
       isLast={true}
       onBack={onBack}
+      onSkip={() => {}}
+      onContinue={() => {}}
       onFinish={onFinish}
       hideSkip={true}
       finishPath={finishPath}

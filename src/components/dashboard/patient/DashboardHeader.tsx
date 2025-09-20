@@ -6,7 +6,7 @@ interface DashboardHeaderProps {
   todayLabel: string
 }
 
-const DashboardHeader: React.FC<DashboardHeaderProps> = ({ greetingName, subtitle = 'Warm, professional care — tailored to you', todayLabel }) => {
+const DashboardHeader: React.FC<DashboardHeaderProps> = ({ greetingName, todayLabel }) => {
   return (
     <div className="w-full rounded-2xl bg-white/80 backdrop-blur-sm border border-emerald-100 shadow-sm p-5 md:p-6 flex flex-col">
       <div className="flex items-start justify-between">

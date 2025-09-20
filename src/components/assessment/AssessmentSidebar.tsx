@@ -45,16 +45,16 @@ const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, tota
                 key={s.key}
                 onClick={() => isClickable && onStepClick(idx)}
                 disabled={!isClickable}
-                className={`w-6 h-6 rounded-md border transition relative flex items-center justify-center ${(() => {
-                  if (isCurrent) return 'bg-emerald-50 border-emerald-200 ring-1 ring-emerald-100'
-                  if (isClickable) return 'hover:bg-emerald-50/60 border-emerald-200 hover:border-emerald-300 cursor-pointer'
-                  return 'border-slate-200 cursor-not-allowed opacity-50'
-                })()}`}
+                className={`w-6 h-6 rounded-md border transition relative flex items-center justify-center ${
+                  isCurrent 
+                    ? 'bg-emerald-50 border-emerald-200 ring-1 ring-emerald-100' 
+                    : isClickable 
+                      ? 'hover:bg-emerald-50/60 border-emerald-200 hover:border-emerald-300 cursor-pointer' 
+                      : 'border-slate-200 cursor-not-allowed opacity-50'
+                }`}
                 title={s.label}
               >
-                <svg className={`h-3.5 w-3.5 ${isCurrent ? 'text-emerald-600' : 'text-slate-500'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9"/>
-                </svg>
+                <i data-lucide={s.icon} className={`h-3.5 w-3.5 ${isCurrent ? 'text-emerald-600' : 'text-slate-500'}`}></i>
                 {status !== 'pending' && (
                   <span className={`absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full ${status === 'answered' ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
                 )}
@@ -92,16 +92,11 @@ const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, tota
                     className={getButtonClassName(isCurrent, isClickable)}
                   >
                     <div className="flex items-center gap-2.5">
-                      <svg className={`h-4 w-4 ${isCurrent ? 'text-emerald-600' : 'text-slate-500'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9"/>
-                      </svg>
+                      <i data-lucide={s.icon} className={`h-4 w-4 ${isCurrent ? 'text-emerald-600' : 'text-slate-500'}`}></i>
                       <span className={`text-[13px] ${isCurrent ? 'font-medium tracking-tight text-emerald-800' : 'text-slate-700'}`}>{s.label}</span>
                     </div>
                     {status !== 'pending' && (
-                      <svg className={`h-4 w-4 ${status === 'answered' ? 'text-emerald-600' : 'text-slate-400'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        ${''}
-                        <path d="M20 6L9 17l-5-5"/>
-                      </svg>
+                      <i data-lucide={status === 'answered' ? 'check' : 'minus'} className={`h-4 w-4 ${status === 'answered' ? 'text-emerald-600' : 'text-slate-400'}`}></i>
                     )}
                   </button>
                 </li>
@@ -115,9 +110,7 @@ const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({ currentStep, tota
       <div className="w-full rounded-lg md:rounded-xl lg:rounded-2xl bg-white/80 backdrop-blur-sm border border-emerald-100 shadow-sm p-2 md:p-3 lg:p-4">
         <div className="flex items-center justify-between mb-1.5 md:mb-2">
           <div className="flex items-center gap-1.5 md:gap-2">
-            <svg className="h-3 w-3 md:h-3.5 md:w-3.5 lg:h-4 lg:w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M11 3C7 3 3 7 3 11c0 5 4 10 9 10 4 0 9-4 9-9 0-5-5-9-10-9z"/>
-            </svg>
+            <i data-lucide="leaf" className="h-3 w-3 md:h-3.5 md:w-3.5 lg:h-4 lg:w-4 text-emerald-600"></i>
             <span className="text-[10px] md:text-[12px] lg:text-[14px] font-medium tracking-tight text-slate-900">Dosha Balance</span>
           </div>
           <div className="flex items-center gap-1">
