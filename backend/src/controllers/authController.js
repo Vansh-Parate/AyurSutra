@@ -15,7 +15,7 @@ const signup = async (req, res) => {
       });
     }
 
-    const { fullName, email, password, role } = req.body;
+    const { fullName, email, phoneNumber, password, role } = req.body;
     
     // Convert role to uppercase for database storage
     const dbRole = role.toUpperCase();
@@ -33,6 +33,7 @@ const signup = async (req, res) => {
     const user = await UserService.createUser({
       fullName,
       email,
+      phoneNumber,
       password,
       role: dbRole
     });
@@ -51,6 +52,7 @@ const signup = async (req, res) => {
         id: user.id,
         fullName: user.fullName,
         email: user.email,
+        phoneNumber: user.phoneNumber,
         role: user.role,
         avatar: user.avatar,
         isEmailVerified: user.isEmailVerified
@@ -119,6 +121,7 @@ const signin = async (req, res) => {
         id: user.id,
         fullName: user.fullName,
         email: user.email,
+        phoneNumber: user.phoneNumber,
         role: user.role,
         avatar: user.avatar,
         isEmailVerified: user.isEmailVerified

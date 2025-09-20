@@ -1,18 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import axios from 'axios';
-
-function getApiBase(): string {
-  const envUrl = (import.meta.env.VITE_API_URL as string) || ''
-  if (envUrl) return envUrl.replace(/\/$/, '')
-  const proto = typeof window !== 'undefined' ? window.location.protocol : 'http:'
-  return `${proto}//localhost:6969`
-}
-const API_BASE_URL = getApiBase()
+import { API_BASE_URL } from '../utils/api';
 
 interface User {
   id: string;
   fullName: string;
   email: string;
+  phoneNumber?: string;
   role: 'patient' | 'practitioner' | 'admin';
   avatar?: string;
 }
@@ -21,7 +15,7 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   login: (email: string, password: string) => Promise<void>;
-  signup: (fullName: string, email: string, password: string, role?: 'patient' | 'practitioner') => Promise<void>;
+  signup: (fullName: string, email: string, phoneNumber: string, password: string, role?: 'patient' | 'practitioner') => Promise<void>;
   logout: () => void;
   loading: boolean;
   isAuthenticated: boolean;
@@ -89,11 +83,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const signup = async (fullName: string, email: string, password: string, role: 'patient' | 'practitioner' = 'patient') => {
+  const signup = async (fullName: string, email: string, phoneNumber: string, password: string, role: 'patient' | 'practitioner' = 'patient') => {
     try {
       const response = await axios.post(`${API_BASE_URL}/api/v1/auth/signup`, {
         fullName,
         email,
+        phoneNumber,
         password,
         role
       });

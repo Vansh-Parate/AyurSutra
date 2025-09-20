@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaRegUser, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 import { MdLockOutline } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
 import { Link, useNavigate} from "react-router-dom";
 import BackgroundMotifs from '../components/BackgroundMotifs';
 import { useAuth } from '../contexts/AuthContext';
@@ -14,6 +15,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState<'patient' | 'practitioner'>('patient');
   const [error, setError] = useState('');
@@ -27,7 +29,7 @@ const Signup = () => {
     setError('');
     
     try{
-      await signup(fullName, email, password, role);
+      await signup(fullName, email, phoneNumber, password, role);
       navigate('/dashboard');
     }catch(err){
       setError(err instanceof Error ? err.message : 'Signup failed');
@@ -117,10 +119,11 @@ const Signup = () => {
 
           <form className='flex flex-col gap-4' onSubmit={handleSignup}>
             <div>
-              <label className="flex text-sm mb-1 font-medium text-slate-700">Full Name</label>
+              <label htmlFor="fullName" className="flex text-sm mb-1 font-medium text-slate-700">Full Name</label>
               <div className="relative">
                 <FaRegUser className="absolute left-3 top-1/2 -translate-y-1/2 text-md text-slate-400" />
                 <input
+                  id="fullName"
                   className="w-full px-3 py-3 pl-10 placeholder:text-sm rounded-xl transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/80 border-slate-200 placeholder-slate-400 text-slate-900"
                   placeholder='Enter your full name'
                   value={fullName}
@@ -131,10 +134,11 @@ const Signup = () => {
             </div>  
 
             <div>
-              <label className="flex text-sm mb-1 font-medium text-slate-700">Email Address</label>
+              <label htmlFor="email" className="flex text-sm mb-1 font-medium text-slate-700">Email Address</label>
               <div className="relative">
                 <CiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-slate-400" />
                 <input
+                  id="email"
                   className="w-full px-3 py-3 pl-10 placeholder:text-sm rounded-xl transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/80 border-slate-200 placeholder-slate-400 text-slate-900"
                   placeholder='your.email@example.com'
                   value={email}
@@ -146,10 +150,28 @@ const Signup = () => {
             </div>
 
             <div>
-              <label className="flex text-sm mb-1 font-medium text-slate-700">Password</label>
+              <label htmlFor="phoneNumber" className="flex text-sm mb-1 font-medium text-slate-700">Phone Number</label>
+              <div className="relative">
+                <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-slate-400" />
+                <input
+                  id="phoneNumber"
+                  className="w-full px-3 py-3 pl-10 placeholder:text-sm rounded-xl transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/80 border-slate-200 placeholder-slate-400 text-slate-900"
+                  placeholder='+91 1234567890'
+                  value={phoneNumber}
+                  onChange={e => setPhoneNumber(e.target.value)}
+                  required
+                  type='tel'
+                />
+              </div>
+              <span className="text-xs text-slate-500">We'll use this for SMS notifications and account verification</span>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="flex text-sm mb-1 font-medium text-slate-700">Password</label>
               <div className="relative">
                 <MdLockOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-slate-400" />
                 <input
+                  id="password"
                   className="w-full px-3 py-3 pl-10 placeholder:text-sm rounded-xl transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/80 border-slate-200 placeholder-slate-400 text-slate-900"
                   placeholder='••••••••'
                   value={password}

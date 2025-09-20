@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 class UserService {
   // Create a new user
   static async createUser(userData) {
-    const { fullName, email, password, role = 'PATIENT' } = userData;
+    const { fullName, email, phoneNumber, password, role = 'PATIENT' } = userData;
     
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -13,6 +13,7 @@ class UserService {
       data: {
         fullName,
         email: email.toLowerCase(),
+        phoneNumber,
         password: hashedPassword,
         role
       }
